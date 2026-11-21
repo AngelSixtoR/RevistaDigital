@@ -53,13 +53,12 @@ const ARTICULOS = [
       "Cómo evolucionan las soluciones y cómo aprenden las redes: definición, componentes, funcionamiento y ejemplos en Python.",
   },
   {
-    href: "articulos/articulo-11.html",
-    portada: "Stream Analytics",
-    clasePortada: "portada-11",
-    categoria: "Analítica de Datos",
-    fecha: "06 · 2026",
-    titulo: "Analítica de Datos: Stream Analytics",
-    resumen:
-      "Introducción a la analítica de datos en tiempo real y sus aplicaciones prácticas.",
-  },
+  href: "articulos/articulo-11.html",
+  portada: "STREAM ANALYTICS",
+  clasePortada: "portada-5",
+  categoria: "Analítica de datos",
+  fecha: "10 · 2026",
+  titulo: "Analítica de Datos: Stream Analytics",
+  resumen: "Datos en movimiento: arquitectura, motores y aplicaciones en tiempo real."
+},
 ];
