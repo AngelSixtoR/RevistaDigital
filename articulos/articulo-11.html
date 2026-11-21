@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Revista digital: Analítica de Datos y Stream Analytics. Arquitectura, conceptos, motores modernos y aplicaciones en tiempo real.">
+  <meta name="theme-color" content="#0a1725">
+  <title>Analítica de Datos: Stream Analytics | Revista IA</title>
+  <!-- Google Tag Manager: bloque equivalente al indicado en el README. -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5WLS67NW');</script>
+  <!-- Se mantienen las hojas del proyecto: relativas a la carpeta articulos/. -->
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/revista.css">
+  <style>
+    /* Estilos exclusivos del artículo 11, sin alterar css/ ni otros artículos. */
+    :root { --a11-ink:#152b48; --a11-blue:#167fcf; --a11-cyan:#0aa5e5; }
+    * { box-sizing: border-box; }
+    html, body { min-height:100%; }
+    body.a11-body {
+      margin:0; min-height:100vh; min-height:100svh;
+      color:#f4f8ff; font-family:Arial, Helvetica, sans-serif;
+      background:linear-gradient(173deg,#081927 0%,#0a101c 49%,#120d1d 100%);
+    }
+    .a11-topbar {
+      display:grid; grid-template-columns:1fr minmax(0,2.5fr) 1fr;
+      align-items:center; gap:16px; min-height:64px; padding:0 32px;
+      font-size:14px;
+    }
+    .a11-back-link { color:#83b7f0; text-decoration:none; width:max-content; }
+    .a11-back-link:hover,.a11-back-link:focus-visible { color:#fff; text-decoration:underline; }
+    #lector-titulo {
+      color:#fff; font-weight:700; font-size:16px;
+      text-align:center; margin:0; line-height:1.4;
+    }
+    .a11-counter {
+      justify-self:end; border:1px solid #1e3048; background:#101b30;
+      border-radius:999px; color:#aab8cf; padding:9px 15px; white-space:nowrap;
+      font-size:13px;
+    }
+    .a11-stage {
+      position:relative; width:min(1200px,100%); min-height:calc(100svh - 64px);
+      margin:0 auto; display:flex; align-items:center; justify-content:center;
+      padding:12px 60px 24px;
+    }
+    #revista { width:1100px; height:755px; max-width:100%; margin:0 auto; }
+    .a11-control {
+      position:absolute; z-index:40; top:50%; transform:translateY(-50%);
+      width:46px; height:46px; border-radius:50%; border:1px solid #192339;
+      background:#142036; color:#f3f8ff; font-size:28px; line-height:1;
+      display:flex; align-items:center; justify-content:center; cursor:pointer;
+      transition:background .2s, transform .2s, opacity .2s;
+    }
+    .a11-control:hover { background:#243b62; transform:translateY(-50%) scale(1.05); }
+    .a11-control:focus-visible { outline:3px solid #74caff; outline-offset:3px; }
+    .a11-control:disabled { opacity:.3; cursor:not-allowed; }
+    .a11-control:disabled:hover { background:#142036; transform:translateY(-50%); }
+    .a11-prev { left:16px; } .a11-next { right:16px; }
+    #revista .pagina.a11-page {
+      width:100%; height:100%; margin:0; border:0; border-radius:0;
+      overflow:hidden; position:relative; background:#f8fafe; color:var(--a11-ink);
+      padding:39px 39px 29px; display:flex; flex-direction:column;
+      box-shadow:inset 0 0 0 1px rgba(21,45,84,.075);
+      font:16px/1.55 Arial, Helvetica, sans-serif;
+    }
+    #revista .pagina.a11-page::before {
+      content:""; position:absolute; left:0; right:0; top:0; height:8px;
+      background:linear-gradient(90deg,#12addf,#3d76de,#464493);
+    }
+    #revista .a11-page h2,#revista .a11-page h3,
+    #revista .a11-page p { margin-top:0; }
+    #revista .a11-page h2 {
+      color:#12314f; font-size:30px; letter-spacing:-.8px; line-height:1.17;
+      font-weight:800; margin:0 0 19px;
+    }
+    #revista .a11-page h3 { color:#194775; font-size:18px; line-height:1.28; margin:17px 0 7px; }
+    #revista .a11-page p { margin-bottom:15px; }
+    #revista .a11-page a { color:#075ab8; overflow-wrap:anywhere; }
+    #revista .a11-page ul { padding-left:20px; margin:3px 0 16px; }
+    #revista .a11-page li { margin:0 0 12px; }
+    .a11-kicker { color:#1872b4; text-transform:uppercase; font-size:11px; font-weight:900; letter-spacing:2px; margin-bottom:16px !important; }
+    .a11-lead { color:#4e657e; font-size:18px; line-height:1.6; }
+    .a11-rule { height:1px; background:#dbe6f1; margin:15px 0 20px; }
+    .a11-foot {
+      display:flex; justify-content:space-between; align-items:center;
+      gap:8px; border-top:1px solid #e3e9f1; margin-top:auto; padding-top:15px;
+      color:#7b8ba2; font-size:11px; font-weight:bold; letter-spacing:1px; text-transform:uppercase;
+    }
+    .a11-foot span:last-child { color:#1b75c5; font-size:13px; }
+    .a11-pull {
+      background:#e9f3fd; border-left:4px solid #249de1; padding:19px 22px;
+      border-radius:0 12px 12px 0; color:#124b82; font-size:21px; font-weight:800;
+      line-height:1.4; margin:18px 0;
+    }
+    .a11-note { margin-top:15px; padding:15px 17px; border:1px solid #dae9f6; border-radius:12px; background:#f1f7fc; font-size:14px; color:#3a5771; }
+    .a11-card { padding:17px 18px; border-radius:12px; background:#ecf5fd; border:1px solid #d6eafa; margin:10px 0; }
+    .a11-card h3 { margin:0 0 5px !important; }
+    .a11-card p { margin:0 !important; }
+    .a11-number { color:#058fce; font-size:68px; font-weight:900; line-height:1; letter-spacing:-4px; margin-bottom:12px; }
+    .a11-timeline { display:grid; gap:17px; margin-top:22px; }
+    .a11-timeline > div { border-left:3px solid #1d91d4; padding:0 0 0 19px; }
+    .a11-timeline strong { color:#087cba; font-size:20px; }
+    .a11-timeline p { margin:4px 0 0 !important; }
+    .a11-diagram { margin:10px 0 0; }
+    .a11-diagram img { display:block; width:100%; height:auto; max-height:390px; object-fit:contain; border-radius:12px; }
+    .a11-diagram figcaption { color:#60758c; font-size:12px; margin-top:12px; }
+    .a11-tag-row { display:flex; flex-wrap:wrap; gap:7px; margin:10px 0 18px; }
+    .a11-tag { background:#e4f1fb; color:#126ba4; border:1px solid #c9e3f6; padding:7px 11px; border-radius:999px; font-size:12px; font-weight:700; }
+    .a11-compare { width:100%; border-collapse:collapse; font-size:13px; margin-top:14px; }
+    .a11-compare th,.a11-compare td { padding:12px 8px; text-align:left; border-bottom:1px solid #d9e4ef; vertical-align:top; }
+    .a11-compare th { color:#1a5487; font-weight:800; background:#eaf2fa; }
+    .a11-compare td:first-child { font-weight:700; }
+    .a11-cases { display:grid; gap:12px; margin-top:14px; }
+    .a11-cases > div { padding:16px; background:#eef6fd; border:1px solid #daeafa; border-radius:12px; }
+    .a11-cases strong { display:block; color:#0c5f99; margin-bottom:4px; }
+    .a11-cases p { margin:0 !important; }
+    .a11-references { padding-left:18px !important; font-size:13px; line-height:1.4; }
+    .a11-references li { margin-bottom:15px !important; }
+    #revista .pagina.a11-cover, #revista .pagina.a11-back-cover {
+      padding:43px 44px 25px; color:white;
+      background:linear-gradient(153deg,var(--c1,#0da4e5) 0%,#3685ec 49%,var(--c2,#363a85) 100%);
+      font-family:Arial,Helvetica,sans-serif;
+      box-shadow:none;
+    }
+    #revista .pagina.a11-cover::before,#revista .pagina.a11-back-cover::before { content:none; }
+    .a11-cover-brand {
+      border:1px solid rgba(255,255,255,.42); border-radius:40px;
+      background:rgba(0,40,91,.3); padding:9px 12px; color:white;
+      font-size:11px; letter-spacing:1.5px; text-transform:uppercase;
+      font-weight:800; width:max-content; margin-bottom:28px;
+    }
+    #revista .a11-cover h1 {
+      font-size:40px; line-height:1.16; letter-spacing:-1.2px;
+      margin:0 0 17px; color:white; font-weight:800;
+    }
+    .a11-authors { font-weight:700; font-size:15px; line-height:1.7; color:#f4f6ff; margin:0 0 11px !important; }
+    .a11-submeta { color:#d6e6ff; font-size:14px; letter-spacing:.5px; margin:0 !important; }
+    .a11-cover-bottom { margin-top:auto; font-size:12px; font-weight:800; letter-spacing:1.4px; text-transform:uppercase; color:#c1d3fb; text-align:center; }
+    .a11-back-cover .a11-big-mark { font-size:118px; line-height:1; font-weight:900; opacity:.28; letter-spacing:-10px; margin:70px 0 20px; }
+    #revista .a11-back-cover h2 { color:white; font-size:35px; margin:0 0 19px; }
+    #revista .a11-back-cover p { color:#ecf3ff; line-height:1.7; }
+    .a11-small-credit { color:#d4e7ff !important; font-size:13px; }
+
+    /* Vista previa si se abre el archivo sin la biblioteca incluida en el repo. */
+    .a11-stage.a11-fallback #revista { position:relative; width:min(1100px,100%); height:min(755px,calc(100svh - 115px)); min-height:450px; }
+    .a11-stage.a11-fallback #revista > .pagina { display:none !important; position:absolute; width:50% !important; height:100% !important; inset:0 auto auto 0; overflow:auto; }
+    .a11-stage.a11-fallback #revista > .pagina.a11-visible { display:flex !important; }
+    .a11-stage.a11-fallback #revista > .pagina.a11-right { left:50%; }
+    .a11-stage.a11-fallback #revista > .pagina.a11-left { left:0; }
+    .a11-stage.a11-fallback #revista > .pagina.a11-single { left:25%; }
+    @media (max-width:860px) {
+      .a11-topbar { grid-template-columns:1fr auto; padding:10px 16px; gap:6px; }
+      #lector-titulo { grid-column:1/-1; grid-row:2; text-align:left; font-size:13px; }
+      .a11-counter { grid-column:2; grid-row:1; font-size:11px; }
+      .a11-stage { min-height:calc(100svh - 83px); padding:12px 9px 28px; }
+      .a11-prev { left:5px; } .a11-next { right:5px; }
+      .a11-control { width:35px; height:35px; font-size:23px; }
+      #revista .pagina.a11-page { padding:27px 25px 20px; font-size:14px; }
+      #revista .a11-page h2 { font-size:25px; }
+      #revista .pagina.a11-cover, #revista .pagina.a11-back-cover { padding:31px 30px 22px; }
+      #revista .a11-cover h1 { font-size:32px; }
+      .a11-stage.a11-fallback #revista { width:min(550px,100%); }
+      .a11-stage.a11-fallback #revista > .pagina { width:100% !important; left:0 !important; }
+    }
+    @media (prefers-reduced-motion:reduce) { .a11-control { transition:none; } }
+  </style>
+</head>
+<body class="a11-body">
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5WLS67NW" height="0" width="0" style="display:none;visibility:hidden" title="Google Tag Manager"></iframe></noscript>
+  <header class="a11-topbar">
+    <a href="../index.html" class="a11-back-link" aria-label="Volver a la portada">← Volver</a>
+    <h2 id="lector-titulo">Analítica de Datos: Stream Analytics</h2>
+    <span class="a11-counter" id="a11-counter" aria-live="polite">Portada · 18 págs.</span>
+  </header>
+  <main class="a11-stage a11-fallback" id="a11-stage" aria-label="Lector de revista">
+    <button class="a11-control a11-prev" id="a11-prev" type="button" aria-label="Página anterior">‹</button>
+    <div id="revista" class="a11-revista">
+      <!-- PORTADA: data-density hard, como exige el README -->
+      <div class="pagina portada-revista a11-page a11-cover" data-density="hard" style="--c1:#0ea8e5;--c2:#383985;">
+        <div class="a11-cover-brand">REVISTA IA · ARTÍCULO 11</div>
+        <h1>Analítica de Datos:<br>Stream Analytics</h1>
+        <p class="a11-authors">Por: Alonso López Guillermo · Juárez Martínez Gabriel Alejandro · Sánchez Pérez Jessica Maylin</p>
+        <p class="a11-submeta">Octubre 2026 · Sistemas Inteligentes</p>
+        <div class="a11-cover-bottom">LA REVISTA SE ABRIRÁ...</div>
+      </div>
+
+      <!-- PÁGINA 1 -->
+      <div class="pagina a11-page">
+        <p class="a11-kicker">01 · Introducción</p>
+        <h2>Los datos ya no esperan</h2>
+        <p class="a11-lead">Sensores IoT, pagos en línea y plataformas masivas generan información cada segundo, y su valor depende de qué tan rápido se actúa sobre ella.</p>
+        <div class="a11-pull">El tiempo entre un evento y una respuesta es la <em>latencia de decisión</em>.</div>
+        <p>La analítica de flujos (<em>Stream Analytics</em>) procesa los datos mientras viajan, en lugar de guardarlos primero para analizarlos después.</p>
+        <div class="a11-foot"><span>Stream Analytics · Revista IA</span><span>01</span></div>
+      </div>
+
+      <!-- PÁGINA 2 -->
+      <div class="pagina a11-page">
+        <p class="a11-kicker">02 · Contexto</p>
+        <h2>El problema del procesamiento por lotes</h2>
+        <p>El procesamiento por lotes (<em>Batch Processing</em>) acumula datos en reposo y los analiza después, lo que genera latencias de minutos, horas o incluso días.</p>
+        <div class="a11-card"><h3>Cuando esperar no es opción</h3><p>Detectar una tarjeta clonada, vigilar un motor industrial o reaccionar a un ataque informático requiere respuestas rápidas.</p></div>
+        <p>Pasar a un esquema de flujos exige resolver tres cosas a la vez: baja latencia, resultados correctos y tolerancia a fallos.</p>
+        <div class="a11-foot"><span>De batch a streaming</span><span>02</span></div>
+      </div>
+
+      <!-- PÁGINA 3 -->
+      <div class="pagina a11-page">
+        <p class="a11-kicker">03 · Evolución</p>
+        <h2>De CEP a Kafka y al modelo unificado</h2>
+        <div class="a11-timeline">
+          <div><strong>Década de 1990</strong><p>Surge el Procesamiento de Eventos Complejos (CEP), pensado para los mercados bursátiles.</p></div>
+          <div><strong>2011</strong><p>LinkedIn libera Apache Kafka para la ingesta distribuida a gran escala, desacoplando productores y consumidores.</p></div>
+          <div><strong>2018</strong><p>Akidau y colaboradores proponen un modelo unificado para tratar <em>batch</em> y <em>streaming</em>.</p></div>
+        </div>
+        <div class="a11-foot"><span>Hitos del procesamiento</span><span>03</span></div>
+      </div>
+
+      <!-- PÁGINA 4 -->
+      <div class="pagina a11-page">
+        <p class="a11-kicker">04 · Arquitectura</p>
+        <h2>Tres capas, un flujo continuo</h2>
+        <p>Los datos pasan de las fuentes a los motores de procesamiento y finalmente a los sistemas que utilizan los resultados.</p>
+        <figure class="a11-diagram">
+          <img src="../assets/img/articulo-11-arquitectura.svg" alt="Diagrama de flujo con tres etapas: ingesta de eventos, procesamiento en tiempo real y salida a tableros o aplicaciones" loading="lazy" width="860" height="460">
+          <figcaption>Figura 1. Flujo de datos en una arquitectura de Stream Analytics.</figcaption>
+        </figure>
+        <div class="a11-foot"><span>Arquitectura de referencia</span><span>04</span></div>
+      </div>
+
+      <!-- PÁGINA 5 -->
+      <div class="pagina a11-page">
+        <p class="a11-kicker">05 · Componentes</p>
+        <h2>¿Qué hace cada capa?</h2>
+        <div class="a11-card"><h3>01 · Ingesta (brokers)</h3><p>Reciben y distribuyen eventos. Desacoplan productores de consumidores. Ejemplos: Apache Kafka y Azure Event Hubs.</p></div>
+        <div class="a11-card"><h3>02 · Procesamiento</h3><p>Transforma y calcula sobre los eventos al vuelo. Ejemplos: Apache Flink y Spark.</p></div>
+        <div class="a11-card"><h3>03 · Salida (sinks)</h3><p>Entrega resultados a tableros en vivo, APIs o almacenamiento.</p></div>
+        <div class="a11-foot"><span>Ingesta · Cálculo · Salida</span><span>05</span></div>
+      </div>
+
+      <!-- PÁGINA 6 -->
+      <div class="pagina a11-page">
+        <p class="a11-kicker">06 · Conceptos clave</p>
+        <h2>Procesamiento con estado</h2>
+        <div class="a11-number">∞</div>
+        <p class="a11-lead">Un flujo es un conjunto de datos infinito (<em>unbounded</em>).</p>
+        <p>Para recordar contexto entre eventos sucesivos sin saturar una base de datos, el sistema guarda un estado distribuido y persistente.</p>
+        <div class="a11-note"><strong>Idea principal:</strong> cada evento puede interpretarse considerando lo que ocurrió antes, no como un dato aislado.</div>
+        <div class="a11-foot"><span>Estado distribuido</span><span>06</span></div>
+      </div>
+
+      <!-- PÁGINA 7 -->
+      <div class="pagina a11-page">
+        <p class="a11-kicker">07 · Conceptos clave</p>
+        <h2>Ventanas temporales</h2>
+        <p>En un flujo continuo, las ventanas permiten agrupar eventos para calcular resultados por intervalos.</p>
+        <div class="a11-card"><h3>Tumbling</h3><p>Ventanas contiguas, de tamaño fijo y sin traslape.</p></div>
+        <div class="a11-card"><h3>Hopping o sliding</h3><p>Ventanas de tamaño fijo que se solapan según un intervalo de actualización.</p></div>
+        <div class="a11-tag-row"><span class="a11-tag">Intervalos</span><span class="a11-tag">Agregaciones</span><span class="a11-tag">Flujos</span></div>
+        <div class="a11-foot"><span>Análisis a través del tiempo</span><span>07</span></div>
+      </div>
+
+      <!-- PÁGINA 8 -->
+      <div class="pagina a11-page">
+        <p class="a11-kicker">08 · Conceptos clave</p>
+        <h2>¿Cuándo ocurrió y cuándo llegó?</h2>
+        <div class="a11-card"><h3>Event-time</h3><p>Momento en que ocurrió el hecho en el mundo real.</p></div>
+        <div class="a11-card"><h3>Processing-time</h3><p>Momento en el que el servidor procesa ese hecho.</p></div>
+        <p>Los eventos pueden llegar tarde o desordenados. Por eso se usan marcas de agua (<em>watermarks</em>) para decidir hasta cuándo esperar.</p>
+        <div class="a11-foot"><span>El tiempo importa</span><span>08</span></div>
+      </div>
+
+      <!-- PÁGINA 9 -->
+      <div class="pagina a11-page">
+        <p class="a11-kicker">09 · Fiabilidad</p>
+        <h2>Exactly-once</h2>
+        <div class="a11-number">1×</div>
+        <p class="a11-lead">Cada evento debe afectar el estado del sistema exactamente una vez, incluso si un nodo falla.</p>
+        <p>Es una garantía importante cuando los resultados deben mantenerse correctos a pesar de interrupciones.</p>
+        <div class="a11-pull">Velocidad y corrección deben avanzar juntas.</div>
+        <div class="a11-foot"><span>Consistencia ante fallos</span><span>09</span></div>
+      </div>
+
+      <!-- PÁGINA 10 -->
+      <div class="pagina a11-page">
+        <p class="a11-kicker">10 · Comparativa</p>
+        <h2>Batch vs. Stream</h2>
+        <table class="a11-compare">
+          <thead><tr><th>Parámetro</th><th>Batch</th><th>Stream Analytics</th></tr></thead>
+          <tbody>
+            <tr><td>Datos</td><td>Finitos (<em>bounded</em>)</td><td>Infinitos (<em>unbounded</em>)</td></tr>
+            <tr><td>Latencia</td><td>Minutos a horas</td><td>Milisegundos a segundos</td></tr>
+            <tr><td>Almacenamiento previo</td><td>Obligatorio (data lake o warehouse)</td><td>Opcional (en tránsito)</td></tr>
+            <tr><td>Estado</td><td>Sin estado entre ejecuciones</td><td>Persistente y distribuido</td></tr>
+          </tbody>
+        </table>
+        <p class="a11-note">Los dos enfoques pueden coexistir: sirven a necesidades distintas de análisis.</p>
+        <div class="a11-foot"><span>Dos modelos complementarios</span><span>10</span></div>
+      </div>
+
+      <!-- PÁGINA 11 -->
+      <div class="pagina a11-page">
+        <p class="a11-kicker">11 · Motores modernos</p>
+        <h2>Flink y Spark</h2>
+        <div class="a11-card"><h3>Apache Flink</h3><p>Procesa evento por evento (<em>true streaming</em>) con latencias menores a 50 ms. Es ideal para reglas complejas en vivo.</p></div>
+        <div class="a11-card"><h3>Spark Structured Streaming</h3><p>Usa micro-lotes y rinde muy bien cuando basta una latencia de segundos.</p></div>
+        <div class="a11-pull">La elección depende de cuán rápido necesita responder el sistema.</div>
+        <div class="a11-foot"><span>Procesamiento en tiempo real</span><span>11</span></div>
+      </div>
+
+      <!-- PÁGINA 12 -->
+      <div class="pagina a11-page">
+        <p class="a11-kicker">12 · Motores modernos</p>
+        <h2>Azure Stream Analytics</h2>
+        <p class="a11-lead">Una opción administrada en la nube para analizar flujos de eventos.</p>
+        <div class="a11-card"><h3>Consultas similares a SQL</h3><p>La sintaxis familiar facilita la adopción del servicio.</p></div>
+        <p>En conjunto, Flink, Spark Structured Streaming y Azure Stream Analytics ilustran diferentes maneras de implementar procesamiento de eventos en tiempo real.</p>
+        <div class="a11-foot"><span>Servicios y alternativas</span><span>12</span></div>
+      </div>
+
+      <!-- PÁGINA 13 -->
+      <div class="pagina a11-page">
+        <p class="a11-kicker">13 · Aplicaciones</p>
+        <h2>Casos de uso</h2>
+        <div class="a11-cases">
+          <div><strong>Fraude bancario</strong><p>Se analiza la transacción en menos de 100 ms para bloquearla antes de autorizarla.</p></div>
+          <div><strong>IoT industrial</strong><p>Vibración y temperatura de motores se analizan continuamente para predecir fallas.</p></div>
+          <div><strong>Recomendaciones</strong><p>El perfil del usuario se actualiza durante la misma sesión según sus últimos clics.</p></div>
+        </div>
+        <div class="a11-foot"><span>Decisiones con datos vivos</span><span>13</span></div>
+      </div>
+
+      <!-- PÁGINA 14 -->
+      <div class="pagina a11-page">
+        <p class="a11-kicker">14 · Conclusiones</p>
+        <h2>Una arquitectura complementaria</h2>
+        <div class="a11-pull">El cambio de paradigma no consiste en eliminar el procesamiento por lotes, sino en complementarlo.</div>
+        <p>Las arquitecturas modernas, como Kappa, usan un solo motor de flujo que procesa en tiempo real y también reprocesa datos históricos releyendo el registro de eventos.</p>
+        <p>Los brokers soportan picos de volumen; a cambio, el streaming exige gestionar estados distribuidos y eventos tardíos.</p>
+        <div class="a11-foot"><span>Balance y oportunidades</span><span>14</span></div>
+      </div>
+
+      <!-- PÁGINA 15 -->
+      <div class="pagina a11-page">
+        <p class="a11-kicker">15 · Recomendaciones</p>
+        <h2>¿Qué sigue?</h2>
+        <p>El siguiente paso es integrar la analítica de flujos con Inteligencia Artificial Agéntica para habilitar sistemas autónomos en tiempo real.</p>
+        <div class="a11-card"><h3>Para la industria</h3><p>Adoptar estándares abiertos como Kafka y Flink para evitar el bloqueo por proveedor.</p></div>
+        <div class="a11-card"><h3>Para futuras investigaciones</h3><p>Realizar <em>benchmarks</em> cuantitativos bajo picos de carga en escenarios IoT.</p></div>
+        <div class="a11-foot"><span>Trabajo futuro</span><span>15</span></div>
+      </div>
+
+      <!-- PÁGINA 16 · Imagen conceptual de IA y datos en tiempo real -->
+      <div class="pagina a11-page">
+        <p class="a11-kicker">16 · Inteligencia artificial</p>
+        <h2>Datos en movimiento, decisiones inteligentes</h2>
+        <p>Los eventos de sensores, transacciones y aplicaciones pueden alimentar modelos de IA para detectar patrones y apoyar decisiones en tiempo real.</p>
+        <figure class="a11-diagram">
+          <img src="../assets/img/articulo-11-ia-tiempo-real.png" alt="Ilustración conceptual de sensores y transacciones que envían flujos de datos a una inteligencia artificial y a un tablero de analítica" loading="lazy" width="1536" height="1024">
+          <figcaption>Figura 2. Representación conceptual de Stream Analytics integrado con inteligencia artificial. Ilustración generada con IA.</figcaption>
+        </figure>
+        <div class="a11-foot"><span>Analítica e IA</span><span>16</span></div>
+      </div>
+
+      <!-- PÁGINA 17 -->
+      <div class="pagina a11-page">
+        <p class="a11-kicker">17 · Fuentes</p>
+        <h2>Referencias</h2>
+        <ul class="a11-references">
+          <li>Akidau, T., Chernyak, S., &amp; Lax, R. (2018). <em>Streaming Systems: The What, Where, When, and How of Large-Scale Data Processing</em>. O'Reilly Media. <a href="https://www.oreilly.com/library/view/streaming-systems/9781491983867/" target="_blank" rel="noopener noreferrer">Enlace</a>.</li>
+          <li>Apache Flink. (s. f.). <em>Time and Order in Streams</em>. Apache Software Foundation. <a href="https://nightlies.apache.org/flink/flink-docs-stable/docs/concepts/time/" target="_blank" rel="noopener noreferrer">Enlace</a>.</li>
+          <li>Apache Kafka. (s. f.). <em>Apache Kafka Documentation</em>. Apache Software Foundation. <a href="https://kafka.apache.org/documentation/" target="_blank" rel="noopener noreferrer">Enlace</a>.</li>
+          <li>Apache Spark. (s. f.). <em>Structured Streaming Programming Guide</em>. Apache Software Foundation. <a href="https://spark.apache.org/docs/latest/streaming/index.html" target="_blank" rel="noopener noreferrer">Enlace</a>.</li>
+          <li>Kleppmann, M. (2017). <em>Designing Data-Intensive Applications</em>. O'Reilly Media.</li>
+          <li>Microsoft. (s. f.). <em>Choose a stream processing technology</em>. Azure Architecture Center. <a href="https://learn.microsoft.com/en-us/azure/architecture/data-guide/technology-choices/stream-processing" target="_blank" rel="noopener noreferrer">Enlace</a>.</li>
+        </ul>
+        <div class="a11-foot"><span>Bibliografía</span><span>17</span></div>
+      </div>
+
+      <!-- CONTRAPORTADA: data-density hard, como exige el README -->
+      <div class="pagina contra-revista a11-page a11-back-cover" data-density="hard" style="--c1:#0c92cf;--c2:#343876;">
+        <div class="a11-cover-brand">REVISTA IA · SISTEMAS INTELIGENTES</div>
+        <div class="a11-big-mark">IA.</div>
+        <h2>El futuro también ocurre en tiempo real.</h2>
+        <p>Analítica de Datos: Stream Analytics</p>
+        <p class="a11-small-credit">UNAM · FES Acatlán<br>Profesor: Rosas Hernández Javier<br>Octubre 2026</p>
+        <div class="a11-cover-bottom">FIN · REVISTA IA</div>
+      </div>
+    </div>
+    <button class="a11-control a11-next" id="a11-next" type="button" aria-label="Página siguiente">›</button>
+  </main>
+
+  <!-- Biblioteca ya incluida en el proyecto, sin CDN. -->
+  <script src="../js/vendor/page-flip.browser.min.js"></script>
+  <script>
+    (function () {
+      'use strict';
+      const stage = document.getElementById('a11-stage');
+      const book = document.getElementById('revista');
+      const pages = Array.from(book.querySelectorAll(':scope > .pagina'));
+      const previous = document.getElementById('a11-prev');
+      const next = document.getElementById('a11-next');
+      const indicator = document.getElementById('a11-counter');
+      let instance = null;
+      let current = 0;
+      function label(index) {
+        return index === 0 ? 'Portada · ' + pages.length + ' págs.' :
+          index === pages.length - 1 ? 'Contraportada · ' + pages.length + ' págs.' :
+          'Página ' + index + ' de ' + (pages.length - 2);
+      }
+      function update(index) {
+        current = Math.max(0, Math.min(pages.length - 1, index));
+        indicator.textContent = label(current);
+        previous.disabled = current === 0;
+        next.disabled = current >= pages.length - 1;
+      }
+      function fallback(index) {
+        // En ausencia de la biblioteca, se muestran las páginas de manera legible.
+        stage.classList.add('a11-fallback');
+        pages.forEach(function (page) {
+          page.classList.remove('a11-visible', 'a11-right', 'a11-left', 'a11-single');
+        });
+        if (index === 0) {
+          pages[0].classList.add('a11-visible', 'a11-right');
+        } else if (index === pages.length - 1) {
+          pages[index].classList.add('a11-visible', 'a11-single');
+        } else if (matchMedia('(max-width: 860px)').matches) {
+          pages[index].classList.add('a11-visible', 'a11-single');
+        } else {
+          const left = 1 + 2 * Math.floor((index - 1) / 2);
+          pages[left].classList.add('a11-visible', 'a11-left');
+          if (pages[left + 1]) pages[left + 1].classList.add('a11-visible', 'a11-right');
+        }
+        update(index);
+      }
+      if (window.St && typeof window.St.PageFlip === 'function') {
+        try {
+          stage.classList.remove('a11-fallback');
+          instance = new window.St.PageFlip(book, {
+            width: 550, height: 755, size: 'stretch',
+            minWidth: 280, maxWidth: 550,
+            minHeight: 385, maxHeight: 755,
+            showCover: true, mobileScrollSupport: false,
+            flippingTime: 750, drawShadow: true, maxShadowOpacity: 0.36,
+            usePortrait: true, autoSize: true
+          });
+          instance.loadFromHTML(pages);
+          instance.on('flip', function (event) { update(event.data); });
+          update(instance.getCurrentPageIndex());
+        } catch (err) {
+          console.warn('El lector usará la vista alternativa:', err);
+          instance = null;
+          fallback(0);
+        }
+      } else {
+        fallback(0);
+      }
+      previous.addEventListener('click', function () {
+        if (instance) instance.flipPrev();
+        else fallback(Math.max(0, current - (current === pages.length - 1 ? 1 : 2)));
+      });
+      next.addEventListener('click', function () {
+        if (instance) instance.flipNext();
+        else fallback(Math.min(pages.length - 1, current + (current === 0 ? 1 : 2)));
+      });
+      document.addEventListener('keydown', function (event) {
+        if (event.key === 'ArrowLeft') previous.click();
+        if (event.key === 'ArrowRight') next.click();
+      });
+      if (!instance) window.addEventListener('resize', function () { fallback(current); });
+    })();
+  </script>
+</body>
+</html>
