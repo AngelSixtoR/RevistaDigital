@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- Google Tag Manager -->
+  <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-5WLS67NW"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  </script>
+  <!-- End Google Tag Manager -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Juegos e IA Multimodal: texto, imágenes, video y audio en tiempo real - Revista IA">
+  <title>Juegos e IA Multimodal — Revista IA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="../assets/img/logo.svg">
+  <!-- Estilos BASE de la revista (navbar, footer, tipografías) -->
+  <link rel="stylesheet" href="../css/styles.css">
+  <!-- Estilos del LECTOR de revista (páginas, portada, controles) -->
+  <link rel="stylesheet" href="../css/revista.css">
+
+  <!-- ============================================
+       ESTILOS EXCLUSIVOS DE ESTE ARTÍCULO
+       ============================================ -->
+  <style>
+    .art-8 { --accent: #00e5ff; }
+
+    .art-8 .tabla-datos {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 0.75rem 0 1rem;
+      font-size: 0.85em;
+    }
+    .art-8 .tabla-datos th,
+    .art-8 .tabla-datos td {
+      border: 1px solid var(--border);
+      padding: 0.4rem 0.55rem;
+      text-align: left;
+    }
+    .art-8 .tabla-datos th {
+      background: rgba(0, 229, 255, 0.1);
+      color: var(--accent);
+      font-family: var(--font-heading);
+    }
+  </style>
+</head>
+<body class="art-8">
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5WLS67NW"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <!-- ===== NAVBAR (igual en todas las páginas) ===== -->
+  <header class="navbar">
+    <div class="contenedor">
+      <a href="../index.html" class="logo">
+        <span class="logo-mark">IA</span>
+        Revista<span>IA</span>
+      </a>
+
+      <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="../index.html">Inicio</a></li>
+          <li><a href="../index.html#articulos">Artículos</a></li>
+          <li><a href="../index.html#nosotros">Nosotros</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== LECTOR DE REVISTA ===== -->
+  <main class="lector">
+    <div class="lector-barra">
+      <a class="lector-volver" href="../index.html#articulos">← Volver</a>
+      <span class="lector-titulo">Juegos e IA Multimodal</span>
+      <span class="lector-contador" id="contador">Portada</span>
+    </div>
+
+    <div class="zona-revista">
+      <button class="lector-flecha prev" aria-label="Página anterior">‹</button>
+
+      <div id="revista" class="revista">
+
+        <!-- PORTADA (no editar data-density) -->
+        <div class="pagina portada-revista" data-density="hard" style="--c1:#0ea5e9; --c2:#6366f1;">
+          <span class="portada-sello">Revista IA · Sistemas Inteligentes</span>
+          <h1>Juegos e IA Multimodal</h1>
+          <p class="portada-autor">Por: Bryan Yael Cortes Cortes y Armando Hernández González</p>
+          <span class="portada-fecha">Noviembre 2026 · Videojuegos e IA</span>
+          <span class="portada-hint">La revista se abrirá…</span>
+        </div>
+
+        <!-- PÁGINA 1 -->
+        <div class="pagina">
+          <span class="etiqueta">Introducción</span>
+          <h2>Un nuevo paradigma interactivo</h2>
+          <p>La industria de los videojuegos vive una transformación estructural. Históricamente, los entornos virtuales dependieron de reglas deterministas escritas a mano y activos pregrabados.</p>
+          <div class="destacado">
+            La IA multimodal integra texto, audio en tiempo real, visión por computador, renderizado y telemetría para crear ecosistemas dinámicos con memoria contextual.
+          </div>
+          <p>En este artículo exploramos la transición hacia agentes generativos, sus cuatro pilares tecnológicos, la percepción sensorial de los NPCs, la generación procedimental y los retos de latencia y ética.</p>
+        </div>
+
+        <!-- PÁGINA 2 -->
+        <div class="pagina">
+          <span class="etiqueta">1. Evolución</span>
+          <h2>De reglas fijas a agentes generativos</h2>
+          <p>A diferencia de modelos aislados, la IA multimodal relaciona la percepción visual 3D, el micrófono del jugador y el estado interno del motor.</p>
+          <ul>
+            <li><strong>FSM y Behavior Trees:</strong> Ligeros (&lt;1 ms), pero predecibles y repetitivos ("mobiliario animado").</li>
+            <li><strong>Sistemas Nemesis y GOAP:</strong> Introdujeron memoria contextual limitada y planificación por objetivos.</li>
+            <li><strong>Agentes Autónomos:</strong> Combinan LLM, difusión y modelos visión-lenguaje (VLM) para razonar y mantener memoria episódica a largo plazo.</li>
+          </ul>
+        </div>
+
+        <!-- PÁGINA 3 -->
+        <div class="pagina">
+          <span class="etiqueta">1. Evolución</span>
+          <h2>IA Tradicional vs. Multimodal</h2>
+          <table class="tabla-datos">
+            <thead>
+              <tr>
+                <th>Dimensión</th>
+                <th>IA Tradicional</th>
+                <th>IA Multimodal</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Diálogos</strong></td>
+                <td>Guiones pregrabados</td>
+                <td>Dinámicos e ilimitados</td>
+              </tr>
+              <tr>
+                <td><strong>Consistencia</strong></td>
+                <td>Determinista (100%)</td>
+                <td>Probabilística (guardrails)</td>
+              </tr>
+              <tr>
+                <td><strong>Cómputo</strong></td>
+                <td>&lt;1 ms por NPC</td>
+                <td>50–200 ms por consulta</td>
+              </tr>
+              <tr>
+                <td><strong>Adaptación</strong></td>
+                <td>Nula fuera de scripts</td>
+                <td>Razonamiento contextual</td>
+              </tr>
+              <tr>
+                <td><strong>Memoria</strong></td>
+                <td>Variables locales fijas</td>
+                <td>Base vectorial con RAG</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- PÁGINA 4 -->
+        <div class="pagina">
+          <span class="etiqueta">2. Arquitectura</span>
+          <h2>Pilares 1 y 2: Texto e Imagen</h2>
+          <p><strong>Texto a Todo:</strong> El texto es la interfaz semántica central. Los LLM generan diálogos inéditos, traducen conservando modismos y ejecutan misiones dinámicas en JSON que alteran el mapa en tiempo real.</p>
+          <p><strong>Imagen y Gráficos:</strong> Redes de difusión como Adobe Firefly y ControlNet crean texturas PBR reduciendo tiempos entre 20% y 40%. Además, Text-to-3D, Gaussian Splatting y <strong>NVIDIA DLSS</strong> reconstruyen geometría e iluminación ray tracing a más de 60 FPS.</p>
+        </div>
+
+        <!-- PÁGINA 5 -->
+        <div class="pagina">
+          <span class="etiqueta">2. Arquitectura</span>
+          <h2>Pilares 3 y 4: Audio y Movimiento</h2>
+          <p><strong>Audio y Voz:</strong> Motores Texto a Voz (TTS) modulan tono y emoción en tiempo real, crean identidades vocales sintéticas y componen bandas sonoras adaptativas según la tensión del combate o exploración.</p>
+          <p><strong>Video y Movimiento:</strong> Modelos Text-to-Motion generan animaciones corporales; herramientas como <strong>Audio2Face</strong> sincronizan labios desde la señal TTS, mientras el <em>Markerless Mocap</em> extrae esqueletos 3D desde video estándar sin trajes especiales.</p>
+        </div>
+
+        <!-- PÁGINA 6 -->
+        <div class="pagina">
+          <span class="etiqueta">3. Agentes Autónomos</span>
+          <h2>NPCs con percepción multimodal</h2>
+          <p>Plataformas como <strong>Inworld AI</strong> y <strong>NVIDIA ACE</strong> dotan a los personajes de tres canales sensoriales:</p>
+          <ul>
+            <li><strong>Percepción Visual:</strong> Modelos VLM (como NVIDIA Nemovision) analizan fotogramas para reconocer vestimenta, obstáculos y espacio.</li>
+            <li><strong>Percepción Auditiva:</strong> Módulos STT transcriben la voz del jugador y detectan matices acústicos.</li>
+            <li><strong>Memoria y Respuesta:</strong> Con bases vectoriales (K-NN), RAG y streaming de audio, responden en 50–150 ms coordinando voz, gestos y recuerdos entre sesiones.</li>
+          </ul>
+        </div>
+
+        <!-- PÁGINA 7 -->
+        <div class="pagina">
+          <span class="etiqueta">4. Mundos Vivos</span>
+          <h2>PCG y Director de Juego</h2>
+          <p>La Generación Procedimental Avanzada (PCG) sustituye el azar por diseño condicional jerárquico: transformadores y modelos de difusión crean biomas coherentes, música dinámica y misiones emergentes mediante prompts unificados.</p>
+          <div class="destacado">
+            El <strong>Ajuste Dinámico de Dificultad (ADA)</strong> usa aprendizaje por refuerzo y telemetría para modular enemigos, clima e iluminación, manteniendo al jugador en estado de flujo.
+          </div>
+        </div>
+
+        <!-- PÁGINA 8 -->
+        <div class="pagina">
+          <span class="etiqueta">5. Retos y Ética</span>
+          <h2>Latencia y marco regulatorio</h2>
+          <p><strong>Rendimiento:</strong> Encajar modelos pesados en 6.9–16.7 ms por fotograma es complejo; ciclos completos (STT → LLM → TTS) con historiales largos promedian 7 s. Se mitiga con microservicios asíncronos (RAGAS) y modelos locales (SLM de 1B–7B vía DirectML o TensorRT).</p>
+          <p><strong>Ética y Derechos:</strong> Surgen litigios por datos de entrenamiento, acuerdos (<strong>SAG-AFTRA</strong>) que exigen consentimiento para clonar voces, y <em>guardrails</em> deterministas contra alucinaciones.</p>
+        </div>
+
+        <!-- PÁGINA 9 -->
+        <div class="pagina">
+          <span class="etiqueta">Conclusión</span>
+          <h2>Motores generativos al vuelo</h2>
+          <p>Proyectos como <strong>NVIDIA Cosmos</strong> y <strong>Unbounded</strong> anticipan videojuegos sin mapas ni guiones pregrabados, donde la geometría, la iluminación y la lógica se sintetizan al vuelo mediante prompts continuos.</p>
+          <div class="destacado">
+            El desarrollador evoluciona de codificar eventos explícitos a diseñar arquitecturas de agentes, ingeniería de prompts y guardrails.
+          </div>
+          <p>La IA multimodal inaugura una era donde cada partida es una obra irrepetible co-creada entre el jugador y el motor inteligente.</p>
+        </div>
+
+        <!-- CONTRAPORTADA (no editar data-density) -->
+        <div class="pagina contra-revista" data-density="hard">
+          <div class="logo-mark">IA</div>
+          <h2>Fin del artículo</h2>
+          <p>FES Acatlán · UNAM — Sistemas Inteligentes</p>
+          <a href="../index.html#articulos" class="btn btn-ghost">← Volver a la revista</a>
+        </div>
+
+      </div>
+
+      <button class="lector-flecha next" aria-label="Página siguiente">›</button>
+    </div>
+  </main>
+
+  <!-- ===== FOOTER (igual en todas las páginas) ===== -->
+  <footer class="footer">
+    <div class="contenedor">
+      <div class="footer-grid">
+        <div>
+          <a href="../index.html" class="logo">
+            <span class="logo-mark">IA</span>
+            Revista<span>IA</span>
+          </a>
+          <p style="margin-top: 0.75rem;">Revista digital con artículos escritos por estudiantes sobre temas de Inteligencia Artificial.</p>
+        </div>
+        <ul class="footer-links">
+          <li><a href="../index.html">Inicio</a></li>
+          <li><a href="../index.html#articulos">Artículos</a></li>
+          <li><a href="../index.html#nosotros">Nosotros</a></li>
+        </ul>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; <span id="anio"></span> Revista IA — Trabajo grupal</span>
+        <span>Hecho con HTML, CSS y JS</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/vendor/page-flip.browser.min.js"></script>
+  <script src="../js/lectura.js"></script>
+</body>
+</html>

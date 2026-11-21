@@ -43,6 +43,16 @@ const ARTICULOS = [
   },
 
   {
+    href: "articulos/articulo-8.html",
+    portada: "IA · JUEGOS",
+    clasePortada: "portada-6",
+    categoria: "Videojuegos e IA",
+    fecha: "11 · 2026",
+    titulo: "Juegos e IA Multimodal",
+    resumen: "Cómo texto, imagen, audio y video en tiempo real transforman los videojuegos en mundos adaptativos."
+  },
+  
+  {
     href: "articulos/articulo-10.html",
     portada: "AG+RN",
     clasePortada: "portada-10",
