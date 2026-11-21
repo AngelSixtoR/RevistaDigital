@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- Google Tag Manager -->
+  <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-5WLS67NW"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  </script>
+  <!-- End Google Tag Manager -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Artículo sobre Ingeniería de IA, MLOps y LLMOps: prácticas para llevar modelos de inteligencia artificial a producción de forma confiable y responsable.">
+  <title>MLOps, Ingeniería de IA y LLMOps — Revista IA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="../assets/img/logo.svg">
+  <!-- Estilos BASE de la revista -->
+  <link rel="stylesheet" href="../css/styles.css">
+  <!-- Estilos del LECTOR de revista -->
+  <link rel="stylesheet" href="../css/revista.css">
+  <!-- Estilos exclusivos del artículo: prefijo art-l para evitar conflictos -->
+  <style>
+    body.art-l { --accent: #7665a8; }
+    .art-l .art-kicker {
+      display:inline-block; margin:0 0 .65rem; padding:.28rem .62rem;
+      border-radius:999px; background:#eee8fb; color:#594b83;
+      font-size:.68rem; font-weight:700; letter-spacing:.11em; text-transform:uppercase;
+    }
+    .art-l .art-lead { font-size:1.05em; line-height:1.55; color:var(--text); }
+    .art-l .art-note {
+      margin:.85rem 0; padding:.75rem .9rem; border-left:4px solid #8b79bb;
+      border-radius:0 .65rem .65rem 0; background:#f1ecfa; color:#403858;
+    }
+    .art-l .art-grid {
+      display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:.55rem; margin:.8rem 0;
+    }
+    .art-l .art-card {
+      padding:.65rem .72rem; border-radius:.75rem; background:#f2edfb;
+      border:1px solid #e4dcf3; min-width:0;
+    }
+    .art-l .art-card:nth-child(4n+2) { background:#e7f5ee; border-color:#d5ebdf; }
+    .art-l .art-card:nth-child(4n+3) { background:#fff0e9; border-color:#f5dfd4; }
+    .art-l .art-card:nth-child(4n+4) { background:#eaf3fb; border-color:#dce9f4; }
+    .art-l .art-card strong { display:block; margin-bottom:.18rem; font-family:var(--font-heading); }
+    .art-l .art-card p { margin:0; font-size:.84em; line-height:1.35; }
+    .art-l .art-flow {
+      display:flex; align-items:stretch; gap:.28rem; margin:.9rem 0; flex-wrap:wrap;
+    }
+    .art-l .art-step {
+      flex:1 1 105px; padding:.62rem .48rem; text-align:center; border-radius:.65rem;
+      background:#eee8fb; font-size:.78em; line-height:1.3;
+    }
+    .art-l .art-step:nth-child(2) { background:#e1f3e9; }
+    .art-l .art-step:nth-child(3) { background:#ffebe2; }
+    .art-l .art-step:nth-child(4) { background:#e5f0fa; }
+    .art-l .art-step:nth-child(5) { background:#fff3c9; }
+    .art-l .art-step b { display:block; margin-bottom:.2rem; font-family:var(--font-heading); }
+    .art-l .art-table {
+      width:100%; border-collapse:collapse; margin:.7rem 0; font-size:.79em; line-height:1.3;
+    }
+    .art-l .art-table th,.art-l .art-table td {
+      padding:.42rem .45rem; border:1px solid #e5e0ec; text-align:left; vertical-align:top;
+    }
+    .art-l .art-table th { background:#eee8fb; color:#4f426f; font-family:var(--font-heading); }
+    .art-l .art-timeline { border-left:2px solid #c9bde4; margin:.65rem 0 .5rem .35rem; padding-left:.9rem; }
+    .art-l .art-timeline p { position:relative; margin:.35rem 0; font-size:.86em; }
+    .art-l .art-timeline p:before {
+      content:""; position:absolute; left:-1.23rem; top:.38rem; width:.48rem; height:.48rem;
+      border-radius:50%; background:#8876b6;
+    }
+    .art-l .art-small { font-size:.76em; line-height:1.35; color:var(--muted); }
+    .art-l .art-ref { font-size:.76em; line-height:1.35; margin:.32rem 0; overflow-wrap:anywhere; }
+    .art-l .art-number { color:#8a78b7; font-family:var(--font-heading); font-weight:700; font-size:1.8rem; }
+    .art-l .art-cover-sub { max-width:90%; }
+    @media (max-width:520px) {
+      .art-l .art-grid { grid-template-columns:1fr; }
+      .art-l .art-table { font-size:.72em; }
+    }
+  </style>
+</head>
+<body class="art-l">
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5WLS67NW"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <!-- NAVBAR original de la revista -->
+  <header class="navbar">
+    <div class="contenedor">
+      <a href="../index.html" class="logo">
+        <span class="logo-mark">IA</span>
+        Revista<span>IA</span>
+      </a>
+      <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="../index.html">Inicio</a></li>
+          <li><a href="../index.html#articulos">Artículos</a></li>
+          <li><a href="../index.html#nosotros">Nosotros</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- LECTOR original de la revista -->
+  <main class="lector">
+    <div class="lector-barra">
+      <a class="lector-volver" href="../index.html#articulos">← Volver</a>
+      <span class="lector-titulo">MLOps, Ingeniería de IA y LLMOps</span>
+      <span class="lector-contador" id="contador">Portada</span>
+    </div>
+
+    <div class="zona-revista">
+      <button class="lector-flecha prev" aria-label="Página anterior">‹</button>
+      <div id="revista" class="revista">
+
+        <!-- PORTADA: conservar data-density="hard" -->
+        <div class="pagina portada-revista" data-density="hard" style="--c1:#7665a8; --c2:#c7b8e8;">
+          <span class="portada-sello">Revista IA · Equipo L · Exposición 27</span>
+          <h1>MLOps, Ingeniería de IA y LLMOps</h1>
+          <p class="portada-autor art-cover-sub">Del laboratorio a la producción: cómo construir, operar y mantener sistemas de inteligencia artificial.</p>
+          <span class="portada-fecha">Sistemas Inteligentes · Noviembre 2026</span>
+          <span class="portada-hint">Desliza o usa las flechas para comenzar</span>
+        </div>
+
+        <!-- PÁGINA 1 -->
+        <div class="pagina">
+          <span class="art-kicker">01 · Introducción</span>
+          <h2>La IA no termina cuando el modelo funciona</h2>
+          <p class="art-lead">Entrenar un modelo con buenos resultados es sólo el comienzo. El desafío real aparece al integrarlo a un producto, atender usuarios y sostener resultados confiables con el tiempo.</p>
+          <p>En producción, los datos cambian y las necesidades evolucionan. Por eso se requieren procesos para desplegar el modelo, observar su comportamiento, corregir fallas y actualizarlo.</p>
+          <div class="art-note"><strong>Idea central</strong><br>Un modelo sólo genera valor cuando opera de forma confiable fuera del entorno experimental.</div>
+          <p class="art-small">Basado en Sculley et al. (2015), Kreuzberger et al. (2023) y Stanford HAI (2025).</p>
+        </div>
+
+        <!-- PÁGINA 2 -->
+        <div class="pagina">
+          <span class="art-kicker">02 · Ingeniería de IA</span>
+          <h2>Diseñar sistemas, no sólo modelos</h2>
+          <p>La ingeniería de IA aplica principios de ingeniería de software para construir sistemas confiables, escalables, reproducibles y mantenibles.</p>
+          <p>Esto exige coordinar datos, modelo, aplicación e infraestructura mediante perfiles con roles claros:</p>
+          <div class="art-grid">
+            <div class="art-card"><strong>Científico de datos</strong><p>Explora datos, entrena modelos y define métricas.</p></div>
+            <div class="art-card"><strong>Ingeniero de datos</strong><p>Recolecta, limpia y transforma información.</p></div>
+            <div class="art-card"><strong>Ingeniero de ML</strong><p>Convierte el modelo en un servicio operable.</p></div>
+            <div class="art-card"><strong>DevOps / Operaciones</strong><p>Automatiza infraestructura y monitorea el servicio.</p></div>
+          </div>
+          <p class="art-small">Amershi et al. (2019); Kreuzberger et al. (2023).</p>
+        </div>
+
+        <!-- PÁGINA 3 -->
+        <div class="pagina">
+          <span class="art-kicker">03 · Antecedentes</span>
+          <h2>El problema de la deuda técnica</h2>
+          <p>Los sistemas de ML acumulan deuda técnica: costos futuros por atajos que dificultan mantener datos, configuraciones, dependencias y entorno.</p>
+          <p>Sculley et al. mostraron que el código del modelo es apenas una fracción frente a la recolección, validación, servicio y monitoreo.</p>
+          <div class="art-note">MLOps ordena esa infraestructura, reduce tareas manuales y controla el ciclo de vida del modelo.</div>
+          <div class="art-timeline">
+            <p><strong>2015</strong> · Google publica el estudio sobre deuda técnica oculta.</p>
+            <p><strong>2018</strong> · MLflow impulsa el seguimiento y la reproducibilidad.</p>
+            <p><strong>2023</strong> · Kreuzberger et al. formalizan la arquitectura MLOps.</p>
+          </div>
+          <p class="art-small">Sculley et al. (2015); Zaharia et al. (2018); Kreuzberger et al. (2023).</p>
+        </div>
+
+        <!-- PÁGINA 4 -->
+        <div class="pagina">
+          <span class="art-kicker">04 · MLOps</span>
+          <h2>DevOps adaptado al aprendizaje automático</h2>
+          <p>MLOps reúne prácticas y herramientas para desarrollar, desplegar y mantener modelos de aprendizaje automático de forma automatizada y confiable.</p>
+          <p>A diferencia de DevOps, aquí también se versionan datos y configuraciones, pues nuevos datos alteran el modelo aunque el código no cambie.</p>
+          <div class="art-grid">
+            <div class="art-card"><strong>Versionado</strong><p>Registrar datos, código y modelos.</p></div>
+            <div class="art-card"><strong>Reproducibilidad</strong><p>Reconstruir experimentos y resultados.</p></div>
+            <div class="art-card"><strong>Automatización</strong><p>Reducir entregas y tareas manuales.</p></div>
+            <div class="art-card"><strong>Monitoreo</strong><p>Vigilar datos y desempeño en producción.</p></div>
+          </div>
+          <p class="art-small">Kreuzberger et al. (2023); Breck et al. (2017); Google Cloud (2024).</p>
+        </div>
+
+        <!-- PÁGINA 5 -->
+        <div class="pagina">
+          <span class="art-kicker">05 · Ciclo de vida</span>
+          <h2>Un proceso que nunca se detiene</h2>
+          <p>El ciclo de MLOps conecta cinco etapas iterativas: los hallazgos del monitoreo pueden obligar a regresar a los datos o al entrenamiento.</p>
+          <div class="art-flow">
+            <div class="art-step"><b>01 · Datos</b>Recolectar, limpiar y preparar.</div>
+            <div class="art-step"><b>02 · Entrenar</b>Construir y ajustar el modelo.</div>
+            <div class="art-step"><b>03 · Evaluar</b>Validar antes de liberar.</div>
+            <div class="art-step"><b>04 · Desplegar</b>Publicar como API o proceso.</div>
+            <div class="art-step"><b>05 · Monitorear</b>Observar calidad y cambios.</div>
+          </div>
+          <p>La integración continua (CI) prueba código, datos y modelos; la entrega continua (CD) automatiza el despliegue; y el entrenamiento continuo (CT) reentrena ante datos nuevos o pérdida de desempeño.</p>
+          <p class="art-small">Google Cloud (2024); Shankar et al. (2022).</p>
+        </div>
+
+        <!-- PÁGINA 6 -->
+        <div class="pagina">
+          <span class="art-kicker">06 · Calidad y madurez</span>
+          <h2>Probar, desplegar y detectar cambios</h2>
+          <p>Antes de liberar un modelo se validan datos, métricas e infraestructura mediante rúbricas como el ML Test Score (28 pruebas de preparación).</p>
+          <p>En operación se vigila la <em>deriva</em> (drift): cambios en los datos o patrones que degradan las predicciones.</p>
+          <div class="art-grid">
+            <div class="art-card"><span class="art-number">0</span><strong>Manual</strong><p>Entrenamiento y entrega desde notebooks.</p></div>
+            <div class="art-card"><span class="art-number">1</span><strong>Pipeline automatizado</strong><p>Entrenamiento continuo con nuevos datos.</p></div>
+            <div class="art-card"><span class="art-number">2</span><strong>CI/CD automatizado</strong><p>El pipeline se prueba y despliega automáticamente.</p></div>
+          </div>
+          <p class="art-small">Niveles de Google Cloud (2024); Breck et al. (2017); Gama et al. (2014).</p>
+        </div>
+
+        <!-- PÁGINA 7 -->
+        <div class="pagina">
+          <span class="art-kicker">07 · LLMOps</span>
+          <h2>Cuando los modelos trabajan con lenguaje</h2>
+          <p>LLMOps extiende MLOps para administrar el ciclo de vida de los modelos grandes de lenguaje (LLM): adaptación, despliegue, evaluación y monitoreo.</p>
+          <table class="art-table">
+            <thead><tr><th>Aspecto</th><th>MLOps clásico</th><th>LLMOps</th></tr></thead>
+            <tbody>
+              <tr><td>Base</td><td>Modelo entrenado</td><td>Modelo fundacional</td></tr>
+              <tr><td>Gestión</td><td>Datos, código y pesos</td><td>También prompts y documentos</td></tr>
+              <tr><td>Evaluación</td><td>Exactitud, F1</td><td>Relevancia y alucinaciones</td></tr>
+              <tr><td>Costo</td><td>Entrenamiento</td><td>Solicitudes y tokens</td></tr>
+              <tr><td>Riesgos</td><td>Deriva de datos</td><td>Inyección de prompts</td></tr>
+            </tbody>
+          </table>
+          <p class="art-small">Pahune y Akhtar (2025); Microsoft (s. f.).</p>
+        </div>
+
+        <!-- PÁGINA 8 -->
+        <div class="pagina">
+          <span class="art-kicker">08 · Adaptación de LLM</span>
+          <h2>Cuatro formas de adaptar un modelo</h2>
+          <p>Un modelo fundacional se ajusta a cada caso mediante estrategias con distinto costo e intervención:</p>
+          <div class="art-grid">
+            <div class="art-card"><strong>Ingeniería de prompts</strong><p>Diseñar, probar y versionar instrucciones y ejemplos para orientar las respuestas.</p></div>
+            <div class="art-card"><strong>RAG</strong><p>Recuperar información externa relevante y añadirla al contexto antes de responder.</p></div>
+            <div class="art-card"><strong>Fine-tuning</strong><p>Modificar los pesos del modelo usando datos específicos del caso de uso.</p></div>
+            <div class="art-card"><strong>LoRA</strong><p>Ajustar matrices ligeras sin reentrenar todos los pesos originales.</p></div>
+          </div>
+          <div class="art-note">La elección depende de la tarea, los datos disponibles, los recursos y el nivel de personalización.</div>
+          <p class="art-small">Hu et al. (2022); Pahune y Akhtar (2025).</p>
+        </div>
+
+        <!-- PÁGINA 9 -->
+        <div class="pagina">
+          <span class="art-kicker">09 · RAG</span>
+          <h2>Responder con información recuperada</h2>
+          <p>La generación aumentada por recuperación (RAG) conecta un LLM con fuentes externas para responder usando documentos verificables.</p>
+          <div class="art-flow">
+            <div class="art-step"><b>01 · Preguntar</b>El usuario consulta.</div>
+            <div class="art-step"><b>02 · Recuperar</b>Se buscan documentos similares.</div>
+            <div class="art-step"><b>03 · Aumentar</b>Se añade contexto al prompt.</div>
+            <div class="art-step"><b>04 · Generar</b>El LLM redacta la respuesta.</div>
+            <div class="art-step"><b>05 · Evaluar</b>Se revisa su calidad.</div>
+          </div>
+          <p>Así, el conocimiento se actualiza modificando los documentos indexados sin necesidad de reentrenar el modelo completo.</p>
+          <p class="art-small">Lewis et al. (2020); Pahune y Akhtar (2025).</p>
+        </div>
+
+        <!-- PÁGINA 10 -->
+        <div class="pagina">
+          <span class="art-kicker">10 · Herramientas</span>
+          <h2>Un ecosistema para cada etapa</h2>
+          <p>Las herramientas de MLOps y LLMOps cubren distintas fases según la arquitectura y recursos del equipo:</p>
+          <div class="art-grid">
+            <div class="art-card"><strong>Seguimiento</strong><p>MLflow registra experimentos, métricas y versiones.</p></div>
+            <div class="art-card"><strong>Datos</strong><p>DVC y feature stores gestionan versiones y variables.</p></div>
+            <div class="art-card"><strong>Empaquetado</strong><p>Docker y Kubernetes crean entornos reproducibles.</p></div>
+            <div class="art-card"><strong>Orquestación</strong><p>Kubeflow Pipelines y Airflow automatizan flujos.</p></div>
+            <div class="art-card"><strong>Nube</strong><p>Vertex AI, Azure ML y SageMaker ofrecen plataformas integrales.</p></div>
+            <div class="art-card"><strong>Aplicaciones LLM</strong><p>LangChain y bases vectoriales habilitan flujos RAG.</p></div>
+          </div>
+          <p class="art-small">Zaharia et al. (2018); documentación técnica de proveedores.</p>
+        </div>
+
+        <!-- PÁGINA 11 -->
+        <div class="pagina">
+          <span class="art-kicker">11 · Evaluación y seguridad</span>
+          <h2>No basta con que la respuesta suene bien</h2>
+          <p>Evaluar un LLM combina pruebas automáticas y revisión humana. Marcos como HELM miden exactitud, robustez, equidad, toxicidad y eficiencia.</p>
+          <p>Además surgen riesgos propios: inyección de prompts, fuga de datos sensibles, envenenamiento de datos y consumo excesivo de tokens.</p>
+          <div class="art-note"><strong>En sistemas RAG:</strong> los documentos externos pueden ocultar instrucciones maliciosas; deben validarse como datos, nunca como órdenes.</div>
+          <p class="art-small">Liang et al. (2023); Greshake et al. (2023); OWASP Foundation (2024).</p>
+        </div>
+
+        <!-- PÁGINA 12 -->
+        <div class="pagina">
+          <span class="art-kicker">12 · Gobernanza</span>
+          <h2>La operación también implica responsabilidad</h2>
+          <p>La trazabilidad, la documentación y la supervisión permiten mitigar riesgos y auditar sistemas de IA:</p>
+          <div class="art-grid">
+            <div class="art-card"><strong>Unión Europea · Reglamento de IA</strong><p>Establece obligaciones según el nivel de riesgo del sistema.</p></div>
+            <div class="art-card"><strong>NIST · AI RMF</strong><p>Marco voluntario para gobernar, mapear, medir y gestionar riesgos.</p></div>
+            <div class="art-card"><strong>ISO/IEC 42001</strong><p>Norma internacional para sistemas de gestión de IA.</p></div>
+            <div class="art-card"><strong>OCDE</strong><p>Principios sobre transparencia, robustez y rendición de cuentas.</p></div>
+          </div>
+          <p class="art-small">NIST (2023); ISO/IEC (2023); OECD (2024); Reglamento (UE) 2024/1689.</p>
+        </div>
+
+        <!-- PÁGINA 13 -->
+        <div class="pagina">
+          <span class="art-kicker">13 · México y América Latina</span>
+          <h2>El reto también es formar talento</h2>
+          <p>El Índice Latinoamericano de IA 2025 evalúa 19 países en adopción, investigación y gobernanza. Chile, Brasil y Uruguay lideran la región; México ocupa el octavo lugar.</p>
+          <p>El informe subraya la brecha de talento: no basta entrenar modelos; hacen falta especialistas que los integren, operen y gobiernen.</p>
+          <div class="art-note">MLOps y LLMOps conectan la investigación con servicios reales y sostenibles en organizaciones.</div>
+          <p class="art-small">CEPAL y CENIA (2025).</p>
+        </div>
+
+        <!-- PÁGINA 14 -->
+        <div class="pagina">
+          <span class="art-kicker">14 · Retos y perspectivas</span>
+          <h2>Operar IA exige atención continua</h2>
+          <div class="art-grid">
+            <div class="art-card"><strong>Datos y deriva</strong><p>Cambios del entorno degradan el desempeño.</p></div>
+            <div class="art-card"><strong>Costos</strong><p>Inferencia por solicitud y consumo de tokens.</p></div>
+            <div class="art-card"><strong>Seguridad</strong><p>Proteger datos, prompts, documentos y APIs.</p></div>
+            <div class="art-card"><strong>Evaluación</strong><p>Medir calidad en salidas abiertas.</p></div>
+            <div class="art-card"><strong>Regulación</strong><p>Exigencia creciente de trazabilidad y auditoría.</p></div>
+            <div class="art-card"><strong>Personas</strong><p>Equipos interdisciplinarios y control humano.</p></div>
+          </div>
+          <p>El rumbo apunta a unificar modelos predictivos y generativos bajo procesos confiables y responsables.</p>
+          <p class="art-small">Paleyes et al. (2022); Stanford HAI (2025); OWASP Foundation (2024).</p>
+        </div>
+
+        <!-- PÁGINA 15 -->
+        <div class="pagina">
+          <span class="art-kicker">15 · Conclusiones</span>
+          <h2>Del experimento al impacto real</h2>
+          <p>Un modelo de IA sólo aporta valor cuando opera con estabilidad en producción. La ingeniería de IA aporta visión sistémica; MLOps automatiza y vigila su ciclo de vida; LLMOps extiende estas prácticas a modelos de lenguaje.</p>
+          <p>Juntas permiten crear sistemas reproducibles, mantenibles y seguros para resolver problemas reales.</p>
+          <div class="art-note"><strong>Para recordar:</strong> desarrollar IA es crear el modelo; hacer ingeniería de IA es lograr que el sistema completo funcione.</div>
+        </div>
+
+        <!-- PÁGINA 16 -->
+        <div class="pagina">
+          <span class="art-kicker">16 · Referencias</span>
+          <h2>Fuentes consultadas</h2>
+          <p class="art-ref">Amershi, S., et al. (2019). Software engineering for machine learning: A case study. <em>ICSE-SEIP</em>.</p>
+          <p class="art-ref">Breck, E., et al. (2017). The ML Test Score: A rubric for ML production readiness. <em>IEEE Big Data</em>.</p>
+          <p class="art-ref">Gama, J., et al. (2014). A survey on concept drift adaptation. <em>ACM Computing Surveys</em>.</p>
+          <p class="art-ref">Hu, E. J., et al. (2022). LoRA: Low-rank adaptation of large language models. <em>ICLR</em>.</p>
+          <p class="art-ref">Kreuzberger, D., Kühl, N., & Hirschl, S. (2023). MLOps: Overview, definition, and architecture. <em>IEEE Access</em>.</p>
+          <p class="art-ref">Lewis, P., et al. (2020). Retrieval-augmented generation for knowledge-intensive NLP tasks. <em>NeurIPS</em>.</p>
+          <p class="art-ref">Paleyes, A., Urma, R.-G., & Lawrence, N. D. (2022). Challenges in deploying machine learning. <em>ACM Computing Surveys</em>.</p>
+          <p class="art-ref">Pahune, S., & Akhtar, M. (2025). Transitioning from MLOps to LLMOps. <em>Information</em>.</p>
+        </div>
+
+        <!-- PÁGINA 17 -->
+        <div class="pagina">
+          <span class="art-kicker">17 · Referencias</span>
+          <h2>Fuentes y equipo</h2>
+          <p class="art-ref">Sculley, D., et al. (2015). Hidden technical debt in machine learning systems. <em>NeurIPS</em>.</p>
+          <p class="art-ref">Shankar, S., et al. (2022). Operationalizing machine learning: An interview study. <em>arXiv</em>.</p>
+          <p class="art-ref">Zaharia, M., et al. (2018). Accelerating the machine learning lifecycle with MLflow. <em>IEEE Data Engineering Bulletin</em>.</p>
+          <p class="art-ref">Google Cloud. (2024). <em>MLOps: Continuous delivery and automation pipelines in machine learning.</em></p>
+          <p class="art-ref">CEPAL & CENIA. (2025). <em>Índice Latinoamericano de Inteligencia Artificial 2025.</em></p>
+          <p class="art-ref">NIST. (2023). <em>AI Risk Management Framework 1.0.</em></p>
+          <div class="art-note"><strong>Equipo L · Exposición 27</strong><br>
+            Luna Martínez Carolina · Portillo Casillas María Fernanda · Salazar García César David · Torres Machorro Antonio
+          </div>
+          <p class="art-small">Asignatura: Sistemas Inteligentes · FES Acatlán, UNAM · Noviembre de 2026.</p>
+        </div>
+
+        <!-- CONTRAPORTADA: conservar data-density="hard" -->
+        <div class="pagina contra-revista" data-density="hard">
+          <div class="logo-mark">IA</div>
+          <h2>Del laboratorio al mundo real</h2>
+          <p>La inteligencia artificial también se construye después del entrenamiento: con ingeniería, operación, evaluación y responsabilidad.</p>
+          <p class="art-small">Equipo L · Exposición 27</p>
+          <a href="../index.html#articulos" class="btn btn-ghost">← Volver a la revista</a>
+        </div>
+
+      </div>
+      <button class="lector-flecha next" aria-label="Página siguiente">›</button>
+    </div>
+  </main>
+
+  <!-- FOOTER original de la revista -->
+  <footer class="footer">
+    <div class="contenedor">
+      <div class="footer-grid">
+        <div>
+          <a href="../index.html" class="logo">
+            <span class="logo-mark">IA</span>
+            Revista<span>IA</span>
+          </a>
+          <p style="margin-top: 0.75rem;">Revista digital con artículos escritos por estudiantes sobre temas de Inteligencia Artificial.</p>
+        </div>
+        <ul class="footer-links">
+          <li><a href="../index.html">Inicio</a></li>
+          <li><a href="../index.html#articulos">Artículos</a></li>
+          <li><a href="../index.html#nosotros">Nosotros</a></li>
+        </ul>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; <span id="anio"></span> Revista IA — Trabajo grupal</span>
+        <span>Hecho con HTML, CSS y JS</span>
+      </div>
+    </div>
+  </footer>
+  <script src="../js/main.js"></script>
+  <script src="../js/vendor/page-flip.browser.min.js"></script>
+  <script src="../js/lectura.js"></script>
+</body>
+</html>
