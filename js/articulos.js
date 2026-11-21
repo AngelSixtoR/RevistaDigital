@@ -54,12 +54,12 @@ const ARTICULOS = [
   },
   {
     href: "articulos/articulo-11.html",
-    portada: "Stream Analytics",
-    clasePortada: "portada-11",
-    categoria: "Analítica de Datos",
-    fecha: "06 · 2026",
+    portada: "STREAM ANALYTICS",
+    clasePortada: "portada-7",
+    categoria: "Analítica de datos",
+    fecha: "10 · 2026",
     titulo: "Analítica de Datos: Stream Analytics",
     resumen:
-      "Introducción a la analítica de datos en tiempo real y sus aplicaciones prácticas.",
-  },
+      "Arquitectura, motores y aplicaciones del análisis de datos en tiempo real."
+},
 ];
