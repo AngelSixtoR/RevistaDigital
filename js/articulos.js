@@ -4,9 +4,9 @@
 // y copia una entrada aquí. No toques index.html.
 // El orden NO importa: las tarjetas se ordenan solas
 // por número de archivo (articulo-5 antes que articulo-10).
-// Campo OPCIONAL: imagen (ruta relativa a assets/img/)
-// → si existe, se usa como fondo de la tarjeta;
-//   si no, mantiene el degradado de clasePortada.
+// Campo OPCIONAL: imagen (ruta relativa, p. ej. "portadas/portada5.png")
+// → si existe, la tarjeta muestra SOLO esa imagen como portada;
+//   si no, mantiene el degradado + texto de clasePortada.
 // ============================================
 
 const ARTICULOS = [
@@ -14,6 +14,7 @@ const ARTICULOS = [
     href: "articulos/articulo-5.html",
     portada: "Tema E",
     clasePortada: "portada-5",
+    imagen: "portadas/portada5.png",
     categoria: "Sistemas inteligentes",
     fecha: "07 · 2026",
     titulo: "Lógica difusa, sentido común y creatividad",
@@ -24,6 +25,7 @@ const ARTICULOS = [
     href: "articulos/articulo-6.html",
     portada: "MD",
     clasePortada: "portada-6",
+    imagen: "portadas/portada6.png",
     categoria: "Minería de Datos",
     fecha: "06 · 2026",
     titulo: "Minería de Datos",
@@ -34,7 +36,7 @@ const ARTICULOS = [
     href: "articulos/articulo-7.html",
     portada: "CE",
     clasePortada: "portada-7",
-    imagen: "assets/img/portada-ce.svg",
+    imagen: "portadas/portada7.png",
     categoria: "Computación evolutiva",
     fecha: "08 · 2026",
     titulo: "Cómputo evolutivo: estrategias evolutivas y programación genética",
@@ -46,6 +48,7 @@ const ARTICULOS = [
     href: "articulos/articulo-8.html",
     portada: "IA · JUEGOS",
     clasePortada: "portada-6",
+    imagen: "portadas/portada8.png",
     categoria: "Videojuegos e IA",
     fecha: "11 · 2026",
     titulo: "Juegos e IA Multimodal",
@@ -56,6 +59,7 @@ const ARTICULOS = [
     href: "articulos/articulo-10.html",
     portada: "AG+RN",
     clasePortada: "portada-10",
+    imagen: "portadas/portada10.png",
     categoria: "Computación evolutiva",
     fecha: "06 · 2026",
     titulo: "Algoritmos genéticos y redes neuronales",
@@ -66,10 +70,33 @@ const ARTICULOS = [
     href: "articulos/articulo-11.html",
     portada: "STREAM ANALYTICS",
     clasePortada: "portada-7",
+    imagen: "portadas/portada11.png",
     categoria: "Analítica de datos",
     fecha: "10 · 2026",
     titulo: "Analítica de Datos: Stream Analytics",
     resumen:
       "Arquitectura, motores y aplicaciones del análisis de datos en tiempo real."
-},
+  },
+  {
+    href: "articulos/articulo-12.html",
+    portada: "MLOps",
+    clasePortada: "portada-9",
+    imagen: "portadas/portada9.png",
+    categoria: "Ingeniería de IA",
+    fecha: "11 · 2026",
+    titulo: "MLOps, Ingeniería de IA y LLMOps",
+    resumen:
+      "Del laboratorio a la producción: cómo construir, operar y mantener sistemas de inteligencia artificial."
+  },
+  {
+    href: "articulos/articulo-13.html",
+    portada: "5 PILARES",
+    clasePortada: "portada-13",
+    imagen: "portadas/portada13.png",
+    categoria: "Ética y Gobierno",
+    fecha: "11 · 2026",
+    titulo: "Los cinco pilares de una IA confiable",
+    resumen:
+      "IA responsable, evaluación, observabilidad, seguridad y gobierno: cómo construir sistemas de IA confiables."
+  },
 ];

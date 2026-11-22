@@ -119,11 +119,13 @@
 .pagina {
   background: linear-gradient(160deg, #141c2e 0%, #101728 55%, #0e1526 100%);
   color: var(--text);
-  padding: clamp(1.4rem, 3.5vw, 2.4rem);
-  padding-bottom: 2.4rem;
+  padding: clamp(1.2rem, 3vw, 2.1rem);
+  padding-bottom: 2.2rem;
   overflow: hidden;
   position: relative;
-  font-size: clamp(0.86rem, 1.1vw, 0.98rem);
+  height: 100%;
+  /* --fit lo ajusta lectura.js para que el contenido quepa en la página */
+  font-size: calc(clamp(0.86rem, 1.1vw, 0.98rem) * var(--fit, 1));
   line-height: 1.65;
 }
 
@@ -134,28 +136,28 @@
 }
 
 .pagina h2 {
-  font-size: clamp(1.15rem, 2vw, 1.4rem);
-  margin: 0 0 0.75rem;
+  font-size: calc(clamp(1.15rem, 2vw, 1.4rem) * var(--fit, 1));
+  margin: 0 0 0.6em;
   color: var(--accent);
 }
 
 .pagina h3 {
-  font-size: clamp(0.98rem, 1.6vw, 1.1rem);
-  margin: 1.1rem 0 0.45rem;
+  font-size: calc(clamp(0.98rem, 1.6vw, 1.1rem) * var(--fit, 1));
+  margin: 1em 0 0.4em;
 }
 
 .pagina p {
-  margin: 0 0 0.85rem;
+  margin: 0 0 0.85em;
   color: var(--text);
 }
 
 .pagina ul,
 .pagina ol {
-  margin: 0 0 1rem 1.15rem;
+  margin: 0 0 1em 1.15em;
 }
 
 .pagina li {
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.4em;
 }
 
 .pagina strong {
@@ -167,22 +169,60 @@
 }
 
 .pagina .etiqueta {
-  margin-bottom: 0.85rem;
+  margin-bottom: 0.85em;
 }
 
 .pagina .destacado {
   background: rgba(0, 229, 255, 0.06);
   border-left: 3px solid var(--accent);
-  padding: 0.8rem 1rem;
+  padding: 0.75em 1em;
   border-radius: 0 10px 10px 0;
-  margin: 1.1rem 0;
+  margin: 1em 0;
   color: var(--muted);
   font-size: 0.92em;
 }
 
 .pagina img {
   border-radius: 10px;
-  margin: 0.75rem 0;
+  margin: 0.75em 0;
+}
+
+/* Ajuste automático (lo aplica lectura.js según el contenido) */
+.pagina.fit-95  { --fit: 0.95; }
+.pagina.fit-90  { --fit: 0.9; }
+.pagina.fit-85  { --fit: 0.85; }
+.pagina.fit-80  { --fit: 0.8; }
+.pagina.fit-75  { --fit: 0.75; }
+.pagina.fit-70  { --fit: 0.7; }
+.pagina.fit-65  { --fit: 0.65; }
+.pagina.fit-60  { --fit: 0.6; }
+.pagina.fit-104 { --fit: 1.04; }
+.pagina.fit-108 { --fit: 1.08; }
+.pagina.fit-112 { --fit: 1.12; }
+
+/* Seguridad: imágenes y bloques que no deben cortarse */
+#revista .pagina figure img,
+#revista .pagina > img {
+  max-width: 100%;
+  max-height: 16em !important;
+  height: auto;
+  object-fit: contain;
+}
+
+#revista .pagina pre {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  font-size: 0.78em;
+}
+
+#revista .pagina table {
+  max-width: 100%;
+  font-size: 0.85em;
+}
+
+/* Último recurso: si ni al mínimo cabe, permitir desplazamiento interno */
+.pagina.pagina-scroll {
+  overflow-y: auto;
 }
 
 /* Numeración automática (inyectada por lectura.js) */
@@ -376,6 +416,14 @@
   .lector-flecha.next { right: calc(50% - 60px); }
 
   .pagina {
-    font-size: 0.88rem;
+    font-size: calc(0.88rem * var(--fit, 1));
+    padding: 1.05rem 1.1rem 2rem;
+    line-height: 1.6;
+  }
+
+  /* En el lector la página es angosta: 2 columnas caben y evitan
+     que las tarjetas se apilen y desborden. */
+  #revista .pagina .art-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }

@@ -20,14 +20,16 @@ function pintarArticulos() {
 
   grid.innerHTML = ordenados
     .map((a) => {
-      // Imagen opcional de fondo (si existe a.imagen); si no, solo degradado
-      const conImagen = a.imagen ? " con-imagen" : "";
+      // Si hay imagen (a.imagen) la portada muestra SOLO la imagen;
+      // si no, el degradado de clasePortada con el texto a.portada.
+      const conFoto = a.imagen ? " con-foto" : "";
       const estilo = a.imagen
         ? ` style="background-image:url('${a.imagen}')"`
         : "";
+      const contenidoPortada = a.imagen ? "" : a.portada;
       return `
     <a class="tarjeta" href="${a.href}">
-      <div class="tarjeta-portada ${a.clasePortada}${conImagen}"${estilo}>${a.portada}</div>
+      <div class="tarjeta-portada ${a.clasePortada}${conFoto}"${estilo}>${contenidoPortada}</div>
       <div class="tarjeta-cuerpo">
         <div class="tarjeta-meta">
           <span class="categoria">${a.categoria}</span>
