@@ -56,6 +56,17 @@ const ARTICULOS = [
   },
   
   {
+    href: "articulos/articulo-9.html",
+    portada: "AGENTIC AI",
+    clasePortada: "portada-9",
+    categoria: "AGENTIC AI",
+    fecha: "11 · 2026",
+    titulo: "Agentic AI: De responder a ejecutar",
+    resumen:
+      "Fundamentos, arquitectura, propiedades, coordinación multi-agente y gobernanza de los agentes autónomos de IA.",
+  },
+
+  {
     href: "articulos/articulo-10.html",
     portada: "AG+RN",
     clasePortada: "portada-10",
