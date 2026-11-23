@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- Google Tag Manager -->
+  <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-5WLS67NW"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  </script>
+  <!-- End Google Tag Manager -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Robótica inteligente: cómo los robots perciben, razonan, aprenden y actúan en el mundo real. Revista IA.">
+  <title>Robótica inteligente: percibir, razonar y actuar — Revista IA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="../assets/img/logo.svg">
+  <!-- Estilos BASE de la revista (navbar, footer, tipografías) -->
+  <link rel="stylesheet" href="../css/styles.css">
+  <!-- Estilos del LECTOR de revista (páginas, portada, controles) -->
+  <link rel="stylesheet" href="../css/revista.css">
+  <link rel="stylesheet" href="../css/calificaciones.css">
+
+  <!-- ESTILOS EXCLUSIVOS DE ESTE ARTÍCULO (.art-robotica) -->
+  <style>
+    body.art-robotica { --accent: #fb923c; }
+
+    .art-robotica .sec-intro  { --accent: #22d3ee; }
+    .art-robotica .sec-percep { --accent: #34d399; }
+    .art-robotica .sec-decide { --accent: #a78bfa; }
+    .art-robotica .sec-aprende{ --accent: #fb923c; }
+    .art-robotica .sec-apps   { --accent: #f472b6; }
+
+    /* Sin numeración automática de páginas */
+    .art-robotica .pagina-num { display: none; }
+
+    .art-robotica .pagina .etiqueta {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid color-mix(in srgb, var(--accent) 55%, transparent);
+    }
+    .art-robotica .pagina .destacado { background: rgba(255, 255, 255, 0.04); }
+
+    /* Figuras (SVG en ../assets/img/robotica-*.svg) */
+    .art-robotica .pagina img { max-width: 100%; height: auto; display: block; border: 1px solid var(--border); }
+    .art-robotica .fig { margin: 0.5rem 0 0.2rem; }
+    .art-robotica .fig figcaption { font-size: 0.78rem; color: var(--muted); margin-top: 0.4rem; line-height: 1.5; }
+    .art-robotica .fig figcaption b { color: var(--text); font-weight: 600; }
+
+    /* Píldoras */
+    .art-robotica .chips { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0.2rem 0 0.9rem; }
+    .art-robotica .chips span {
+      font-family: var(--font-heading); font-size: 0.74rem; font-weight: 600; color: var(--accent);
+      background: color-mix(in srgb, var(--accent) 12%, transparent);
+      border: 1px solid color-mix(in srgb, var(--accent) 40%, transparent);
+      padding: 0.3rem 0.6rem; border-radius: 999px;
+    }
+
+    /* Datos resaltados (estadísticas) */
+    .art-robotica .datos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; margin: 0.6rem 0 0.9rem; }
+    .art-robotica .datos div {
+      text-align: center; padding: 0.6rem 0.3rem; border-radius: 10px;
+      background: color-mix(in srgb, var(--accent) 10%, transparent);
+      border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
+      font-family: var(--font-heading); font-weight: 700; font-size: 1.15rem; color: var(--accent); line-height: 1.1;
+    }
+    .art-robotica .datos small { display: block; margin-top: 0.25rem; font-family: var(--font-body); font-weight: 400; font-size: 0.68rem; color: var(--muted); }
+
+    /* Comparativa de dos columnas */
+    .art-robotica .versus { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; margin: 0.6rem 0 0.9rem; }
+    .art-robotica .versus div { border: 1px solid var(--border); border-radius: 10px; padding: 0.6rem 0.7rem; font-size: 0.85em; line-height: 1.45; }
+    .art-robotica .versus div:last-child { border-color: color-mix(in srgb, var(--accent) 60%, transparent); background: color-mix(in srgb, var(--accent) 8%, transparent); }
+    .art-robotica .versus b { display: block; font-family: var(--font-heading); color: var(--accent); margin-bottom: 0.2rem; }
+
+    /* Tarjetas de aplicaciones */
+    .art-robotica .apps { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; margin: 0.5rem 0 0.8rem; }
+    .art-robotica .apps div { border: 1px solid var(--border); border-radius: 10px; padding: 0.55rem 0.65rem; font-size: 0.82em; line-height: 1.4; color: var(--muted); }
+    .art-robotica .apps b { display: block; color: var(--accent); font-family: var(--font-heading); font-size: 0.95em; margin-bottom: 0.15rem; }
+
+    /* Créditos */
+    .art-robotica .creditos { font-size: 0.8rem; color: var(--muted); line-height: 1.6; }
+    .art-robotica .creditos b { color: var(--text); font-weight: 600; }
+  </style>
+</head>
+<body class="art-robotica">
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5WLS67NW"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <!-- ===== NAVBAR ===== -->
+  <header class="navbar">
+    <div class="contenedor">
+      <a href="../index.html" class="logo">
+        <span class="logo-mark">IA</span>
+        Revista<span>IA</span>
+      </a>
+      <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="../index.html">Inicio</a></li>
+          <li><a href="../index.html#articulos">Artículos</a></li>
+          <li><a href="../index.html#nosotros">Nosotros</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== LECTOR DE REVISTA ===== -->
+  <main class="lector">
+    <div class="lector-barra">
+      <a class="lector-volver" href="../index.html#articulos">← Volver</a>
+      <span class="lector-titulo">Robótica inteligente: percibir, razonar y actuar</span>
+      <span class="lector-contador" id="contador">Portada</span>
+    </div>
+
+    <div class="zona-revista">
+      <button class="lector-flecha prev" aria-label="Página anterior">‹</button>
+
+      <div id="revista" class="revista">
+
+        <!-- ===== PORTADA ===== -->
+        <div class="pagina portada-revista" data-density="hard" style="--c1:#f59e0b; --c2:#ef4444;">
+          <span class="portada-sello">Revista IA · Robótica</span>
+          <h1>Robótica inteligente: percibir, razonar y actuar</h1>
+          <p class="portada-autor">Por: Jazmín Acatitlan San Juan · Antonio Florencio García Estrada · Roberto Martínez García · Emmanuel Rubio Sánchez · Ximena Toledo Méndez</p>
+          <span class="portada-fecha">Noviembre 2026 · Robótica</span>
+          <span class="portada-hint">La revista se abrirá…</span>
+        </div>
+
+        <!-- INTRODUCCIÓN -->
+        <div class="pagina sec-intro">
+          <span class="etiqueta">Introducción</span>
+          <h2>De robot programado a robot autónomo</h2>
+          <figure class="fig">
+            <img src="../assets/img/robotica-ciclo.svg" alt="Ciclo Percibir, Razonar y Actuar alrededor de un robot.">
+            <figcaption>Un robot autónomo repite sin parar el ciclo <b>percibir → razonar → actuar</b>.</figcaption>
+          </figure>
+          <div class="versus">
+            <div><b>Robot tradicional</b>Repite instrucciones fijas en un entorno controlado.</div>
+            <div><b>Robot autónomo</b>Decide por sí mismo aunque el entorno cambie.</div>
+          </div>
+        </div>
+
+        <div class="pagina sec-intro">
+          <span class="etiqueta">Introducción</span>
+          <h2>La IA como adaptabilidad</h2>
+          <p>La inteligencia artificial cambia la <strong>programación rígida</strong> («si pasa A, haz B») por <strong>comportamiento adaptable</strong>: el robot generaliza a situaciones que nadie escribió de antemano.</p>
+          <div class="destacado"><strong>El gran reto: la incertidumbre.</strong> La luz cambia, los sensores fallan, las personas se mueven. Un sistema inteligente debe decidir bien aunque no lo sepa todo.</div>
+          <div class="chips"><span>Ruido</span><span>Imprevistos</span><span>Información incompleta</span></div>
+        </div>
+
+        <div class="pagina sec-intro">
+          <span class="etiqueta">Introducción</span>
+          <h2>Hardware y software</h2>
+          <figure class="fig">
+            <img src="../assets/img/robotica-robot.svg" alt="Robot con sensores, actuadores, IA a bordo y edge computing.">
+            <figcaption>Procesadores dedicados en el <b>borde</b> (<em>edge computing</em>) permiten reaccionar en milisegundos, sin depender de la nube.</figcaption>
+          </figure>
+          <p>Una <strong>arquitectura de software</strong> global conecta percepción, decisión y control, como un sistema nervioso.</p>
+        </div>
+
+        <!-- PERCEPCIÓN -->
+        <div class="pagina sec-percep">
+          <span class="etiqueta">Percepción y sensores</span>
+          <h2>Los «ojos y oídos» del robot</h2>
+          <figure class="fig">
+            <img src="../assets/img/robotica-sensores.svg" alt="Robot con LiDAR, cámara RGB y ultrasonido.">
+            <figcaption>La <b>fusión de sensores</b> combina varios para compensar las debilidades de cada uno.</figcaption>
+          </figure>
+          <ul>
+            <li><strong>LiDAR:</strong> mide distancias con láser.</li>
+            <li><strong>Cámaras RGB:</strong> aportan color y textura.</li>
+            <li><strong>Ultrasonido:</strong> detecta obstáculos cercanos.</li>
+          </ul>
+        </div>
+
+        <div class="pagina sec-percep">
+          <span class="etiqueta">Percepción y sensores</span>
+          <h2>Visión por computadora</h2>
+          <figure class="fig">
+            <img src="../assets/img/robotica-cnn.svg" alt="Red neuronal convolucional que va de la imagen a bordes, formas, partes y objeto.">
+            <figcaption>Las <b>redes neuronales convolucionales (CNN)</b> aprenden por capas: de bordes a objetos completos.</figcaption>
+          </figure>
+          <div class="destacado">Así un robot distingue una persona de una caja, o una pieza defectuosa de una correcta.</div>
+        </div>
+
+        <div class="pagina sec-percep">
+          <span class="etiqueta">Percepción y sensores</span>
+          <h2>SLAM y nubes de puntos</h2>
+          <figure class="fig">
+            <img src="../assets/img/robotica-slam.svg" alt="Nube de puntos de un cuarto con la posición y la trayectoria del robot.">
+            <figcaption><b>SLAM</b> responde a la vez: ¿cómo es este lugar? y ¿dónde estoy yo? Los datos llegan como <b>nubes de puntos</b>: millones de coordenadas 3D.</figcaption>
+          </figure>
+        </div>
+
+        <!-- DECISIONES -->
+        <div class="pagina sec-decide">
+          <span class="etiqueta">Decisión y planificación</span>
+          <h2>Planificar una trayectoria</h2>
+          <figure class="fig">
+            <img src="../assets/img/robotica-astar.svg" alt="Cuadrícula con obstáculos y la ruta que encuentra el algoritmo A* de A a B.">
+            <figcaption><b>A*</b> explora primero los caminos más prometedores y evita obstáculos. Si aparecen nuevos, recalcula la ruta.</figcaption>
+          </figure>
+        </div>
+
+        <div class="pagina sec-decide">
+          <span class="etiqueta">Decisión y planificación</span>
+          <h2>Razonar con incertidumbre</h2>
+          <p>Las <strong>reglas fijas</strong> fallan ante lo imprevisto. El razonamiento <strong>probabilístico</strong> asigna grados de confianza y actúa con prudencia según ellos.</p>
+          <div class="datos">
+            <div>85 %<small>persona</small></div>
+            <div>10 %<small>objeto</small></div>
+            <div>5 %<small>sombra</small></div>
+          </div>
+          <h3>Interacción humano-robot (HRI)</h3>
+          <p>Con <strong>lenguaje natural y gestos</strong>, las personas dan instrucciones sin escribir código.</p>
+        </div>
+
+        <div class="pagina sec-decide">
+          <span class="etiqueta">Decisión y planificación</span>
+          <h2>¿Cómo «piensa» antes de moverse?</h2>
+          <div class="chips"><span>Interpreta</span><span>Evalúa opciones</span><span>Elige</span><span>Mueve el actuador</span></div>
+          <div class="destacado">El razonamiento lógico solo cuenta si termina en una <strong>ejecución motriz</strong> precisa: pensar y mover forman una misma cadena.</div>
+        </div>
+
+        <!-- APRENDIZAJE -->
+        <div class="pagina sec-aprende">
+          <span class="etiqueta">Aprendizaje y adaptación</span>
+          <h2>Aprender por refuerzo</h2>
+          <figure class="fig">
+            <img src="../assets/img/robotica-refuerzo.svg" alt="Gráfica: la recompensa del robot aumenta con los intentos.">
+            <figcaption>Por <b>prueba y error</b> (<em>Reinforcement Learning</em>): recompensa si acierta, penalización si falla. Tras miles de intentos, descubre la mejor estrategia.</figcaption>
+          </figure>
+        </div>
+
+        <div class="pagina sec-aprende">
+          <span class="etiqueta">Aprendizaje y adaptación</span>
+          <h2>Imitar y mejorar</h2>
+          <div class="versus">
+            <div><b>Aprendizaje imitativo</b>Una persona muestra la tarea y el robot la reproduce (<em>Learning from Demonstration</em>).</div>
+            <div><b>Mejora continua</b>Con la experiencia optimiza tareas repetitivas: más rapidez y precisión.</div>
+          </div>
+          <p>Así adquiere destrezas complejas, como manipular objetos delicados, que serían difíciles de programar a mano.</p>
+        </div>
+
+        <div class="pagina sec-aprende">
+          <span class="etiqueta">Aprendizaje y adaptación</span>
+          <h2>Anticipar fallas</h2>
+          <p>El <strong>mantenimiento predictivo</strong> analiza vibración, temperatura y consumo para detectar desgaste antes de que ocurra la falla.</p>
+          <div class="versus">
+            <div><b>Automatizado</b>Repite lo programado.</div>
+            <div><b>Inteligente</b>Aprende y se adapta cuando las condiciones cambian.</div>
+          </div>
+        </div>
+
+        <!-- APLICACIONES -->
+        <div class="pagina sec-apps">
+          <span class="etiqueta">Aplicaciones</span>
+          <h2>Casos de uso reales</h2>
+          <figure class="fig">
+            <img src="../assets/img/robotica-aplicaciones.svg" alt="Iconos de vehículo autónomo, cobot industrial, dron de rescate y asistente de servicio.">
+          </figure>
+          <div class="apps">
+            <div><b>Vehículos autónomos</b>LiDAR, cámaras y planificación entre tráfico y peatones.</div>
+            <div><b>Cobots industriales</b>Trabajan junto a operarios de forma segura.</div>
+            <div><b>Drones de rescate</b>Exploran zonas de desastre y localizan personas.</div>
+            <div><b>Asistentes de servicio</b>Guían y entregan en hospitales y hoteles.</div>
+          </div>
+        </div>
+
+        <div class="pagina sec-apps">
+          <span class="etiqueta">Retos éticos y de seguridad</span>
+          <h2>No todo es técnico</h2>
+          <div class="apps">
+            <div><b>Seguridad física</b>Un robot que falla puede causar daño real.</div>
+            <div><b>Responsabilidad</b>¿Quién responde ante un error?</div>
+            <div><b>Privacidad</b>Cámaras y sensores recogen datos de las personas.</div>
+            <div><b>Empleo</b>La automatización transforma el trabajo.</div>
+          </div>
+          <div class="destacado">Un robot puede ser técnicamente capaz y aun así no ser confiable.</div>
+        </div>
+
+        <!-- CONCLUSIONES -->
+        <div class="pagina sec-intro">
+          <span class="etiqueta">Reflexión final</span>
+          <h2>El futuro de la robótica</h2>
+          <p>La robótica inteligente se resume en un ciclo: <strong>percibir, razonar y actuar</strong>. Percepción, decisión y aprendizaje dependen unas de otras, y lo que distingue a un robot inteligente es que <strong>se adapta</strong>.</p>
+          <div class="destacado">El reto no es solo que los robots piensen mejor, sino que lo hagan de forma segura y útil para las personas.</div>
+        </div>
+
+        <!-- ===== CONTRAPORTADA ===== -->
+        <div class="pagina contra-revista" data-density="hard">
+          <div class="logo-mark">IA</div>
+          <h2>Fin del artículo</h2>
+          <p>Robótica inteligente: percibir, razonar y actuar</p>
+          <p class="creditos">
+            <b>Jazmín Acatitlan San Juan · Antonio Florencio García Estrada · Roberto Martínez García · Emmanuel Rubio Sánchez · Ximena Toledo Méndez</b><br>
+            Equipo 2 · Robótica · Revista IA
+          </p>
+          <a href="../index.html#articulos" class="btn btn-ghost">← Volver a la revista</a>
+        </div>
+
+      </div>
+
+      <button class="lector-flecha next" aria-label="Página siguiente">›</button>
+    </div>
+
+    <div data-contenido="articulo-2"></div>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="contenedor">
+      <div class="footer-grid">
+        <div>
+          <a href="../index.html" class="logo">
+            <span class="logo-mark">IA</span>
+            Revista<span>IA</span>
+          </a>
+          <p style="margin-top: 0.75rem;">Revista digital con artículos escritos por estudiantes sobre temas de Inteligencia Artificial.</p>
+        </div>
+        <ul class="footer-links">
+          <li><a href="../index.html">Inicio</a></li>
+          <li><a href="../index.html#articulos">Artículos</a></li>
+          <li><a href="../index.html#nosotros">Nosotros</a></li>
+        </ul>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; <span id="anio"></span> Revista IA — Trabajo grupal</span>
+        <span>Hecho con HTML, CSS y JS</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/vendor/page-flip.browser.min.js"></script>
+  <script src="../js/lectura.js"></script>
+  <script type="module" src="../js/calificaciones.js"></script>
+</body>
+</html>
