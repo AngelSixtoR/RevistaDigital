@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- Google Tag Manager, igual que la plantilla oficial -->
+  <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-5WLS67NW"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Qué son NLP, LLMs, RAG y la búsqueda vectorial; cómo se relacionan, dónde se utilizan y qué límites tienen.">
+  <title>NLP, LLMs, RAG y Vector Search — Revista IA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="../assets/img/logo.svg">
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/revista.css">
+  <style>
+    .art-3 { --accent: #22d3ee; }
+    .art-3 .pagina { overflow-wrap: break-word; }
+    .art-3 .pagina strong { color: inherit; }
+    .art-3 .pasos-rag { margin: .4rem 0 .5rem 1.15rem; padding: 0; }
+    .art-3 .pasos-rag li { margin: .12rem 0; }
+    .art-3 .fuentes { font-size: .79em; line-height: 1.45; }
+    .art-3 .fuentes li { margin: .28rem 0; }
+    .art-3 .fuentes a { overflow-wrap: anywhere; }
+  </style>
+</head>
+<body class="art-3">
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5WLS67NW" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <header class="navbar">
+    <div class="contenedor">
+      <a href="../index.html" class="logo"><span class="logo-mark">IA</span>Revista<span>IA</span></a>
+      <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span><span></span></button>
+      <nav><ul class="nav-links">
+        <li><a href="../index.html">Inicio</a></li>
+        <li><a href="../index.html#articulos">Artículos</a></li>
+        <li><a href="../index.html#nosotros">Nosotros</a></li>
+      </ul></nav>
+    </div>
+  </header>
+  <main class="lector">
+    <div class="lector-barra">
+      <a class="lector-volver" href="../index.html#articulos">← Volver</a>
+      <span class="lector-titulo">NLP, LLMs, RAG y Vector Search</span>
+      <span class="lector-contador" id="contador">Portada</span>
+    </div>
+    <div class="zona-revista">
+      <button class="lector-flecha prev" aria-label="Página anterior">‹</button>
+      <div id="revista" class="revista">
+        <div class="pagina portada-revista" data-density="hard" style="--c1:#0b375e; --c2:#6d28d9;">
+          <span class="portada-sello">Revista IA · Artículo C</span>
+          <h1>Inteligencia Artificial y Lenguaje</h1>
+          <p>De los LLMs a la búsqueda inteligente: NLP, RAG y Vector Search</p>
+          <p class="portada-autor">Por: Mauricio Noguez Medina</p>
+          <span class="portada-fecha">Noviembre 2026 · Procesamiento de Lenguaje Natural</span>
+          <span class="portada-hint">La revista se abrirá…</span>
+        </div>
+        <div class="pagina">
+          <span class="etiqueta">Introducción</span>
+          <h2>El lenguaje como puente</h2>
+          <p>Cuando preguntamos a un asistente virtual, traducimos un mensaje o buscamos un documento, utilizamos tecnologías capaces de trabajar con lenguaje humano. El <strong>Procesamiento de Lenguaje Natural (PLN o NLP)</strong> es el campo de la inteligencia artificial que estudia cómo analizar, representar y producir texto o voz.</p>
+<p>Los <strong>LLMs</strong> generan respuestas; los <strong>embeddings</strong> representan significados como vectores; la <strong>búsqueda vectorial</strong> localiza información similar; y <strong>RAG</strong> reúne recuperación de documentos y generación de texto. Son piezas distintas que pueden trabajar juntas.</p>
+        </div>
+        <div class="pagina">
+          <span class="etiqueta">Fundamentos</span>
+          <h2>NLP: comprender tareas del lenguaje</h2>
+          <p>El NLP abarca tareas diferentes. Un sistema puede <strong>clasificar</strong> comentarios según su sentimiento, <strong>identificar entidades</strong> como fechas y lugares, <strong>traducir</strong> textos o <strong>resumir</strong> documentos.</p>
+<p>Para hacerlo, transforma el lenguaje en representaciones que un algoritmo pueda procesar. El desempeño depende del contexto, los datos de entrenamiento y la evaluación. Por ejemplo, la frase «el banco está cerca» no significa lo mismo al hablar de un río que de una institución financiera.</p>
+<div class="destacado">Idea clave: procesar lenguaje no equivale a comprenderlo como una persona.</div>
+        </div>
+        <div class="pagina">
+          <span class="etiqueta">Cómo funciona</span>
+          <h2>De los tokens a los Transformers</h2>
+          <p>Los modelos de lenguaje no reciben directamente oraciones como conceptos humanos. Primero, un <strong>tokenizador</strong> divide el texto en unidades llamadas <em>tokens</em>, que pueden ser palabras, partes de palabras o signos.</p>
+<p>Muchos LLMs actuales utilizan arquitecturas basadas en <strong>Transformers</strong>. Sus mecanismos de atención permiten relacionar partes del contexto y construir representaciones útiles para predecir una secuencia de tokens.</p>
+<p>El resultado es una herramienta flexible: puede redactar, transformar, clasificar y explicar texto, aunque su fluidez no garantiza que cada afirmación sea verdadera.</p>
+        </div>
+        <div class="pagina">
+          <span class="etiqueta">Modelos de lenguaje</span>
+          <h2>LLMs: modelos que generan texto</h2>
+          <p>Un <strong>Large Language Model (LLM)</strong> es un modelo entrenado con grandes cantidades de datos para aprender patrones del lenguaje. Durante la generación, estima qué tokens son adecuados a continuación, teniendo en cuenta el contexto disponible.</p>
+<p>Por eso puede continuar una conversación, escribir código o resumir información. Sin embargo, también puede producir <strong>alucinaciones</strong>: afirmaciones convincentes pero incorrectas o sin respaldo.</p>
+<div class="destacado">Un LLM no es, por sí mismo, un buscador de documentos actualizado ni una base de datos verificable.</div>
+        </div>
+        <div class="pagina">
+          <span class="etiqueta">Representaciones</span>
+          <h2>Embeddings: significado en números</h2>
+          <p>Un <strong>embedding</strong> es una representación numérica de un texto, normalmente un vector con muchas dimensiones. Un modelo especializado puede colocar contenidos relacionados cerca unos de otros dentro de ese espacio matemático.</p>
+<p>Así, «¿cómo recupero mi contraseña?» y «olvidé mi clave de acceso» pueden resultar cercanos aunque no compartan todas las palabras.</p>
+<p>La cercanía depende del modelo y de la métrica utilizada: <strong>similitud del coseno</strong>, distancia euclidiana u otras. Los embeddings aproximan relaciones semánticas; no son una garantía de equivalencia exacta.</p>
+        </div>
+        <div class="pagina">
+          <span class="etiqueta">Recuperación de información</span>
+          <h2>Vector Search: buscar por sentido</h2>
+          <p>En una búsqueda tradicional por palabras clave, el sistema intenta hacer coincidir términos. La <strong>búsqueda vectorial</strong> compara embeddings para recuperar los documentos más cercanos a una consulta en significado.</p>
+<p>Primero se calculan y almacenan vectores de los documentos. Después se crea el vector de la pregunta y se buscan sus vecinos más similares. En colecciones grandes se suelen usar índices especializados para acelerar la búsqueda.</p>
+<div class="destacado">No siempre conviene sustituir las palabras clave: una búsqueda <strong>híbrida</strong> combina señales léxicas y semánticas.</div>
+        </div>
+        <div class="pagina">
+          <span class="etiqueta">Arquitectura</span>
+          <h2>RAG: recuperar antes de responder</h2>
+          <p><strong>Retrieval-Augmented Generation (RAG)</strong> combina recuperación de información y generación con un LLM. Su objetivo es producir respuestas apoyadas en fuentes externas, por ejemplo manuales, artículos o documentos institucionales.</p>
+<ol class="pasos-rag">
+<li>El usuario formula una pregunta.</li>
+<li>El sistema recupera fragmentos relevantes de una colección.</li>
+<li>Esos fragmentos se incorporan al contexto del LLM.</li>
+<li>El modelo redacta una respuesta y, cuando se implementa, cita sus fuentes.</li>
+</ol>
+<p><strong>RAG no reentrena automáticamente al modelo:</strong> le proporciona información adicional al momento de responder.</p>
+        </div>
+        <div class="pagina">
+          <span class="etiqueta">Aplicación práctica</span>
+          <h2>Un ejemplo dentro de la UNAM</h2>
+          <p>Imaginemos un asistente universitario que responde: «¿Qué requisitos necesito para solicitar una beca?». En lugar de improvisar, un sistema RAG busca fragmentos del reglamento y de la convocatoria vigente.</p>
+<p>La búsqueda vectorial permite localizar apartados relacionados con «apoyo económico», aunque la consulta utilice la palabra «beca». El LLM recibe los fragmentos relevantes, redacta una explicación y enlaza el documento de origen.</p>
+<div class="destacado">Si las fuentes son antiguas, incompletas o contradictorias, el asistente debe advertirlo en lugar de inventar una respuesta.</div>
+        </div>
+        <div class="pagina">
+          <span class="etiqueta">Flujo técnico</span>
+          <h2>Así se construye un sistema RAG</h2>
+          <p>Durante la <strong>preparación</strong>, se recopilan documentos autorizados, se limpian y se dividen en fragmentos (<em>chunks</em>). Después se generan embeddings y se guardan junto con referencias a sus fuentes.</p>
+<p>Durante la <strong>consulta</strong>, la pregunta recupera fragmentos pertinentes; opcionalmente se reordenan por relevancia (<em>reranking</em>). El LLM recibe ese contexto y produce una respuesta.</p>
+<p>El diseño debe considerar actualización de documentos, permisos de acceso, calidad de la búsqueda y trazabilidad. Una buena respuesta depende tanto del modelo como de la información recuperada.</p>
+        </div>
+        <div class="pagina">
+          <span class="etiqueta">Análisis crítico</span>
+          <h2>Límites: precisión, sesgo y seguridad</h2>
+          <p>RAG puede mejorar el fundamento de una respuesta, pero <strong>no garantiza exactitud</strong>. El buscador puede seleccionar fragmentos poco relevantes; el LLM puede interpretarlos mal; y las fuentes pueden estar desactualizadas.</p>
+<p>También existen riesgos de privacidad y de <strong>inyección de instrucciones</strong> en documentos recuperados. Para reducirlos se requieren controles de acceso, evaluación con preguntas reales, validación de citas y tratamiento de las fuentes como contenido no confiable.</p>
+<div class="destacado">La evaluación debe medir, por separado, recuperación, fidelidad a las fuentes y utilidad de la respuesta.</div>
+        </div>
+        <div class="pagina">
+          <span class="etiqueta">Comparación</span>
+          <h2>Cuatro conceptos, cuatro funciones</h2>
+          <ul>
+<li><strong>NLP:</strong> campo de estudio y conjunto de métodos para trabajar con lenguaje.</li>
+<li><strong>LLM:</strong> modelo que genera o transforma texto a partir de un contexto.</li>
+<li><strong>Vector Search:</strong> mecanismo para recuperar contenidos similares mediante vectores.</li>
+<li><strong>RAG:</strong> arquitectura que conecta recuperación externa y generación.</li>
+</ul>
+<p>No son sinónimos ni se sustituyen mutuamente. Su combinación resulta útil cuando una respuesta necesita tanto capacidad de redacción como evidencia recuperable. La tecnología más adecuada depende del problema: a veces basta con una búsqueda convencional o un clasificador sencillo.</p>
+        </div>
+        <div class="pagina">
+          <span class="etiqueta">Conclusión</span>
+          <h2>Una IA útil también debe ser verificable</h2>
+          <p>El procesamiento de lenguaje natural abrió el camino a sistemas capaces de interactuar mediante texto. Los LLMs ampliaron las posibilidades de generación, mientras que los embeddings y la búsqueda vectorial permiten encontrar información por similitud semántica.</p>
+<p>RAG conecta esas capacidades con documentos externos y puede hacer que las respuestas sean más relevantes y auditables. Sin embargo, la calidad de la solución exige comprobar fuentes, proteger datos y reconocer incertidumbres.</p>
+<div class="destacado">La pregunta no es solo «¿puede responder?», sino «¿con qué información responde y cómo lo verificamos?».</div>
+        </div>
+        <div class="pagina">
+          <span class="etiqueta">Referencias</span>
+          <h2>Fuentes para profundizar</h2>
+          <p><strong>Fuentes técnicas consultadas:</strong></p>
+<ul class="fuentes">
+<li><a href="https://huggingface.co/docs/course/chapter1/1" target="_blank" rel="noopener noreferrer">Hugging Face — Curso de NLP y modelos de lenguaje</a>.</li>
+<li><a href="https://docs.cloud.google.com/bigquery/docs/vector-search-intro" target="_blank" rel="noopener noreferrer">Google Cloud — Embeddings y búsqueda vectorial</a>.</li>
+<li><a href="https://www.ibm.com/think/topics/retrieval-augmented-generation" target="_blank" rel="noopener noreferrer">IBM — Retrieval-Augmented Generation</a>.</li>
+<li><a href="https://learn.microsoft.com/en-us/azure/foundry/concepts/retrieval-augmented-generation" target="_blank" rel="noopener noreferrer">Microsoft Learn — RAG e índices</a>.</li>
+<li><a href="https://cheatsheetseries.owasp.org/cheatsheets/RAG_Security_Cheat_Sheet.html" target="_blank" rel="noopener noreferrer">OWASP — Seguridad en sistemas RAG</a>.</li>
+</ul>
+<p>Material elaborado para la Revista IA · Noviembre de 2026.</p>
+        </div>
+        <div class="pagina contra-revista" data-density="hard">
+          <div class="logo-mark">IA</div><h2>Fin del artículo</h2>
+          <p>Gracias por leer la Revista IA</p>
+          <a href="../index.html#articulos" class="btn btn-ghost">← Volver a la revista</a>
+        </div>
+      </div>
+      <button class="lector-flecha next" aria-label="Página siguiente">›</button>
+    </div>
+  </main>
+  <footer class="footer"><div class="contenedor"><div class="footer-grid"><div>
+    <a href="../index.html" class="logo"><span class="logo-mark">IA</span>Revista<span>IA</span></a>
+    <p style="margin-top:.75rem">Revista digital sobre inteligencia artificial, elaborada como trabajo grupal.</p>
+  </div><ul class="footer-links"><li><a href="../index.html">Inicio</a></li><li><a href="../index.html#articulos">Artículos</a></li><li><a href="../index.html#nosotros">Nosotros</a></li></ul></div>
+  <div class="footer-bottom"><span>&copy; <span id="anio"></span> Revista IA — Trabajo grupal</span><span>Hecho con HTML, CSS y JS</span></div>
+  </div></footer>
+  <script src="../js/main.js"></script>
+  <script src="../js/vendor/page-flip.browser.min.js"></script>
+  <script src="../js/lectura.js"></script>
+</body>
+</html>
