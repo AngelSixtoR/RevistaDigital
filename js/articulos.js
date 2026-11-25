@@ -99,4 +99,13 @@ const ARTICULOS = [
     resumen:
       "IA responsable, evaluación, observabilidad, seguridad y gobierno: cómo construir sistemas de IA confiables."
   },
+  {
+    href: "articulos/articulo-14.html",
+    portada: "NLP · LLM",
+    clasePortada: "portada-7",
+    categoria: "Procesamiento de Lenguaje Natural",
+    fecha: "11 · 2026",
+    titulo: "Inteligencia Artificial y Lenguaje: de los LLMs a la búsqueda inteligente",
+    resumen: "NLP, LLMs, embeddings, búsqueda vectorial y RAG: cómo se combinan y qué límites tienen."
+},
 ];
