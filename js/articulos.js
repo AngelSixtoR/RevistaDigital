@@ -111,6 +111,16 @@ const ARTICULOS = [
       "IA responsable, evaluación, observabilidad, seguridad y gobierno: cómo construir sistemas de IA confiables."
   },
   {
+    href: "articulos/articulo-2.html",
+    portada: "Robótica",
+    clasePortada: "portada-4",
+    imagen: "portadas/Portada2.png",
+    categoria: "Robótica inteligente",
+    fecha: "11 · 2026",
+    titulo: "Robótica inteligente: percibir, razonar y actuar",
+    resumen:
+      "Cómo un robot percibe su entorno, toma decisiones, aprende de la experiencia y actúa en el mundo real.",
+  },
     href: "articulos/articulo-14.html",
     portada: "NLP · LLM",
     clasePortada: "portada-7",
