@@ -56,6 +56,17 @@ const ARTICULOS = [
   },
   
   {
+    href: "articulos/articulo-9.html",
+    portada: "AGENTIC AI",
+    clasePortada: "portada-9",
+    categoria: "AGENTIC AI",
+    fecha: "11 · 2026",
+    titulo: "Agentic AI: De responder a ejecutar",
+    resumen:
+      "Fundamentos, arquitectura, propiedades, coordinación multi-agente y gobernanza de los agentes autónomos de IA.",
+  },
+
+  {
     href: "articulos/articulo-10.html",
     portada: "AG+RN",
     clasePortada: "portada-10",
@@ -110,4 +121,12 @@ const ARTICULOS = [
     resumen:
       "Cómo un robot percibe su entorno, toma decisiones, aprende de la experiencia y actúa en el mundo real.",
   },
+    href: "articulos/articulo-14.html",
+    portada: "NLP · LLM",
+    clasePortada: "portada-7",
+    categoria: "Procesamiento de Lenguaje Natural",
+    fecha: "11 · 2026",
+    titulo: "Inteligencia Artificial y Lenguaje: de los LLMs a la búsqueda inteligente",
+    resumen: "NLP, LLMs, embeddings, búsqueda vectorial y RAG: cómo se combinan y qué límites tienen."
+},
 ];

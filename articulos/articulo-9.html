@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- Google Tag Manager -->
+  <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-5WLS67NW"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  </script>
+  <!-- End Google Tag Manager -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Agentic AI: fundamentos, arquitectura, tipos, coordinación multi-agente y gobernanza de los agentes autónomos de IA.">
+  <title>Agentic AI — Revista IA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="../assets/img/logo.svg">
+  <!-- Estilos BASE de la revista -->
+  <link rel="stylesheet" href="../css/styles.css">
+  <!-- Estilos del LECTOR de revista -->
+  <link rel="stylesheet" href="../css/revista.css">
+
+  <!-- Estilos exclusivos de este artículo -->
+  <style>
+    .art-9 { --accent: #10b981; }
+
+    .art-9 .tabla-datos {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 0.65rem 0 0.85rem;
+      font-size: 0.84em;
+    }
+    .art-9 .tabla-datos th,
+    .art-9 .tabla-datos td {
+      border: 1px solid var(--border);
+      padding: 0.4rem 0.55rem;
+      text-align: left;
+      vertical-align: top;
+    }
+    .art-9 .tabla-datos th {
+      background: rgba(16, 185, 129, 0.14);
+      color: var(--accent);
+      font-family: var(--font-heading);
+    }
+
+    .art-9 .art-9-fig {
+      margin: 0.55rem 0 0.75rem;
+      text-align: center;
+    }
+    .art-9 .art-9-fig img {
+      width: 100%;
+      max-height: 155px;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+    .art-9 .art-9-fig figcaption {
+      font-size: 0.74em;
+      opacity: 0.8;
+      margin-top: 0.3rem;
+    }
+
+    .art-9 .art-9-bloque {
+      background: rgba(16, 185, 129, 0.07);
+      border-left: 3px solid var(--accent);
+      padding: 0.45rem 0.65rem;
+      border-radius: 0 6px 6px 0;
+      margin-bottom: 0.55rem;
+      font-size: 0.9em;
+    }
+    .art-9 .art-9-bloque strong {
+      color: var(--accent);
+    }
+  </style>
+</head>
+<body class="art-9">
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5WLS67NW"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <!-- ===== NAVBAR ===== -->
+  <header class="navbar">
+    <div class="contenedor">
+      <a href="../index.html" class="logo">
+        <span class="logo-mark">IA</span>
+        Revista<span>IA</span>
+      </a>
+
+      <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="../index.html">Inicio</a></li>
+          <li><a href="../index.html#articulos">Artículos</a></li>
+          <li><a href="../index.html#nosotros">Nosotros</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== LECTOR DE REVISTA ===== -->
+  <main class="lector">
+    <div class="lector-barra">
+      <a class="lector-volver" href="../index.html#articulos">← Volver</a>
+      <span class="lector-titulo">Agentic AI</span>
+      <span class="lector-contador" id="contador">Portada</span>
+    </div>
+
+    <div class="zona-revista">
+      <button class="lector-flecha prev" aria-label="Página anterior">‹</button>
+
+      <div id="revista" class="revista">
+
+        <!-- PORTADA (Página 1 del libro) -->
+        <div class="pagina portada-revista" data-density="hard" style="--c1:#064e3b; --c2:#0ea5e9;">
+          <span class="portada-sello">Revista IA · Artículo 09</span>
+          <h1>Agentic AI: De responder a ejecutar</h1>
+          <p class="portada-autor">Gabriel Emanuel Hernández Espinoza · Cristian Mendoza Tejeda · Fernanda Garrido Vázquez · Rodrigo Israel Morales Jiménez</p>
+          <span class="portada-fecha">Noviembre 2026 · Sistemas Inteligentes (1754)</span>
+          <span class="portada-hint">La revista se abrirá…</span>
+        </div>
+
+        <!-- PÁGINA 1 (Contenido) -->
+        <div class="pagina">
+          <span class="etiqueta">01 · Fundamentos</span>
+          <h2>¿Qué es un Agente de IA?</h2>
+          <p>En Inteligencia Artificial, un <strong>agente</strong> es una entidad autónoma capaz de percibir su entorno mediante sensores, procesar esa información y actuar dinámicamente sobre el ambiente a través de efectores para alcanzar objetivos.</p>
+          <div class="destacado">
+            <strong>Contraste clave:</strong> Un termostato programable solo sigue reglas fijas; un agente de reservas autónomo evalúa opciones, negocia horarios y resuelve imprevistos por sí mismo.
+          </div>
+          <p>Este enfoque transforma los sistemas pasivos en colaboradores capaces de operar en entornos cambiantes.</p>
+        </div>
+
+        <!-- PÁGINA 2 (Contenido con imagen 1) -->
+        <div class="pagina">
+          <span class="etiqueta">01 · Fundamentos</span>
+          <h2>El ciclo percepción-acción</h2>
+          <figure class="art-9-fig">
+            <img src="../assets/img/art9-ciclo.png" alt="Ciclo de interacción entre entorno, sensores, agente y efectores">
+            <figcaption>Fig. 1. Bucle continuo de percepción, razonamiento y ejecución.</figcaption>
+          </figure>
+          <ul>
+            <li><strong>Entorno:</strong> Contexto y condiciones externas donde opera el sistema.</li>
+            <li><strong>Sensores:</strong> Mecanismos de entrada que capturan datos del ambiente.</li>
+            <li><strong>Agente:</strong> Núcleo de razonamiento y toma de decisiones autónomas.</li>
+            <li><strong>Efectores:</strong> Actuadores o interfaces que modifican el entorno.</li>
+          </ul>
+        </div>
+
+        <!-- PÁGINA 3 (Contenido) -->
+        <div class="pagina">
+          <span class="etiqueta">02 · Evolución</span>
+          <h2>Del prompt estático al agente</h2>
+          <p>Los modelos de lenguaje tradicionales (LLM) funcionan bajo un esquema reactivo de pregunta y respuesta. La <strong>IA Agéntica</strong> rompe esa barrera al dotar al modelo de capacidad de ejecución completa.</p>
+          <table class="tabla-datos">
+            <thead>
+              <tr>
+                <th>LLM Tradicional (Responde)</th>
+                <th>Agente Autónomo (Ejecuta)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Genera texto pasivo.</td>
+                <td>Planifica pasos y submetas.</td>
+              </tr>
+              <tr>
+                <td>Reacciona a un solo prompt.</td>
+                <td>Usa herramientas externas.</td>
+              </tr>
+              <tr>
+                <td>Contexto limitado a la sesión.</td>
+                <td>Conserva memoria persistente.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- PÁGINA 4 (Contenido) -->
+        <div class="pagina">
+          <span class="etiqueta">03 · Propiedades</span>
+          <h2>Cuatro rasgos agénticos</h2>
+          <p>Para que un sistema computacional sea considerado verdaderamente agéntico, debe integrar cuatro propiedades esenciales:</p>
+          <div class="art-9-bloque">
+            <strong>1. Autonomía:</strong> Toma decisiones operativas sin requerir intervención humana en cada paso.
+          </div>
+          <div class="art-9-bloque">
+            <strong>2. Reactividad:</strong> Percibe cambios imprevistos del entorno en tiempo real y ajusta su rumbo.
+          </div>
+          <div class="art-9-bloque">
+            <strong>3. Proactividad:</strong> Toma la iniciativa y descompone objetivos complejos para cumplir metas.
+          </div>
+          <div class="art-9-bloque">
+            <strong>4. Actividad social:</strong> Interactúa fluidamente con usuarios y otros agentes.
+          </div>
+        </div>
+
+        <!-- PÁGINA 5 (Contenido con imagen 2) -->
+        <div class="pagina">
+          <span class="etiqueta">04 · Arquitectura</span>
+          <h2>Un cerebro conectado al mundo</h2>
+          <figure class="art-9-fig">
+            <img src="../assets/img/art9-arquitectura.png" alt="Arquitectura cognitiva de un agente de IA">
+            <figcaption>Fig. 2. Componentes internos de razonamiento y planificación.</figcaption>
+          </figure>
+          <p>El <strong>Cerebro (LLM)</strong> actúa como motor de razonamiento general, apoyado por un <strong>Módulo de Planificación</strong> que divide problemas complejos en pasos manejables.</p>
+          <p>Para lograrlo, utiliza estrategias como <em>ReAct</em> (razonar y actuar), <em>Chain-of-Thought</em> (CoT) y <em>Tree-of-Thoughts</em> (ToT), permitiéndole autorreflexionar y corregir errores sobre la marcha.</p>
+        </div>
+
+        <!-- PÁGINA 6 (Contenido) -->
+        <div class="pagina">
+          <span class="etiqueta">04 · Arquitectura</span>
+          <h2>Memoria y Tool Calling</h2>
+          <p>Un agente necesita recordar lo que ha hecho y contar con manos digitales para interactuar con sistemas reales:</p>
+          <ul>
+            <li><strong>Memoria:</strong> Combina el historial inmediato de la sesión con memoria a largo plazo mediante <strong>RAG</strong> (<em>Retrieval-Augmented Generation</em>) para recuperar experiencias previas.</li>
+            <li><strong>Tool Calling:</strong> Interfaz que permite al agente invocar APIs externas, navegar en la web, ejecutar código Python o consultar bases de datos relacionales.</li>
+          </ul>
+          <div class="destacado">
+            Gracias al <em>Tool Calling</em>, el agente deja de adivinar respuestas y consulta fuentes reales antes de actuar.
+          </div>
+        </div>
+
+        <!-- PÁGINA 7 (Contenido con imagen 3) -->
+        <div class="pagina">
+          <span class="etiqueta">05 · Taxonomía</span>
+          <h2>Tipos de agentes individuales</h2>
+          <figure class="art-9-fig">
+            <img src="../assets/img/art9-tipos.png" alt="Clasificación de agentes individuales">
+            <figcaption>Fig. 3. Especialización según alcance y aprendizaje.</figcaption>
+          </figure>
+          <ul>
+            <li><strong>Orientados a tareas:</strong> Dividen una meta concreta en subobjetivos secuenciales hasta completarla.</li>
+            <li><strong>Orientados a la innovación:</strong> Exploran soluciones inéditas, generan código nuevo o apoyan el descubrimiento de fármacos.</li>
+            <li><strong>Orientados al ciclo de vida:</strong> Aprenden continuamente y se adaptan en mundos abiertos a largo plazo.</li>
+          </ul>
+        </div>
+
+        <!-- PÁGINA 8 (Contenido) -->
+        <div class="pagina">
+          <span class="etiqueta">06 · Coordinación</span>
+          <h2>Agentes trabajando en red</h2>
+          <p>Los sistemas multi-agente resuelven problemas complejos dividiendo roles especializados bajo tres esquemas de colaboración:</p>
+          <div class="art-9-bloque">
+            <strong>Cooperación ordenada:</strong> Flujo estructurado por etapas (ej. <em>Manager → Diseñador → Ingeniero → Tester</em>).
+          </div>
+          <div class="art-9-bloque">
+            <strong>Cooperación abierta:</strong> Interacción libre y lluvia de ideas entre pares para explorar múltiples enfoques.
+          </div>
+          <div class="art-9-bloque">
+            <strong>Interacción adversaria:</strong> Debate crítico entre roles opuestos para detectar fallos, sesgos o errores lógicos.
+          </div>
+        </div>
+
+        <!-- PÁGINA 9 (Contenido con imagen 4) -->
+        <div class="pagina">
+          <span class="etiqueta">07 · Aplicaciones</span>
+          <h2>La IA agéntica en el trabajo real</h2>
+          <figure class="art-9-fig">
+            <img src="../assets/img/art9-aplicaciones.png" alt="Aplicaciones empresariales de la IA agéntica">
+            <figcaption>Fig. 4. Casos de uso activos en la industria actual.</figcaption>
+          </figure>
+          <table class="tabla-datos">
+            <thead>
+              <tr>
+                <th>Sector</th>
+                <th>Impacto autónomo</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Software</strong></td>
+                <td>Escribe, prueba y corrige <em>bugs</em> en código.</td>
+              </tr>
+              <tr>
+                <td><strong>Finanzas</strong></td>
+                <td>Detección proactiva de fraudes y soporte 24/7.</td>
+              </tr>
+              <tr>
+                <td><strong>Logística</strong></td>
+                <td>Optimiza inventarios y pedidos en tiempo real.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- PÁGINA 10 (Contenido) -->
+        <div class="pagina">
+          <span class="etiqueta">08 · Gobernanza</span>
+          <h2>Autonomía con responsabilidad</h2>
+          <p>Otorgar capacidad de acción a un sistema inteligente exige controles estrictos para mitigar riesgos operativos:</p>
+          <ul>
+            <li><strong>Desafíos técnicos:</strong> Prevención de alucinaciones ejecutables, protección de privacidad y defensa ante inyección de <em>prompts</em>.</li>
+          </ul>
+          <div class="destacado">
+            <strong>Human-in-the-Loop (HITL):</strong> Principio fundamental que exige supervisión y aprobación humana en decisiones éticas, financieras o de alto impacto.
+          </div>
+          <p>Sin gobernanza clara, la velocidad de ejecución puede amplificar errores en segundos.</p>
+        </div>
+
+        <!-- PÁGINA 11 (Contenido) -->
+        <div class="pagina">
+          <span class="etiqueta">09 · Futuro</span>
+          <h2>La próxima interfaz digital</h2>
+          <p>Estamos presenciando una transición histórica en la interacción humano-computadora: pasamos de aplicaciones pasivas donde el usuario opera cada menú, a <strong>interfaces orientadas a objetivos</strong>.</p>
+          <p>En este paradigma, las personas definen la intención y las restricciones éticas, mientras redes de agentes coordinan herramientas, verifican resultados y ejecutan flujos completos de principio a fin.</p>
+          <div class="destacado">
+            El software del futuro no solo asistirá al usuario: colaborará activamente para resolver trabajo real.
+          </div>
+        </div>
+
+        <!-- PÁGINA 12 (Contenido: Conclusión y Referencias) -->
+        <div class="pagina">
+          <span class="etiqueta">Cierre</span>
+          <h2>Conclusión y Referencias</h2>
+          <p>La <strong>Agentic AI</strong> marca el salto del procesamiento de lenguaje a la acción autónoma. Integrar planificación, memoria y herramientas bajo supervisión humana permite construir sistemas eficientes y seguros.</p>
+          <ul style="font-size: 0.78em; line-height: 1.4;">
+            <li>Rosas Hernández, J. (2026). <em>Sistemas Inteligentes</em> (Grupo 1754). MAC, FES Acatlán, UNAM.</li>
+            <li>Amazon Web Services. (2026). <em>¿Qué son los agentes de inteligencia artificial?</em> AWS.</li>
+            <li>Google Cloud. (2026). <em>¿Qué son los agentes de IA? Definición, ejemplos y tipos.</em></li>
+            <li>IBM &amp; Microsoft. (2026). <em>Arquitectura y casos de uso de agentes de IA.</em></li>
+          </ul>
+        </div>
+
+        <!-- CONTRAPORTADA (Página 14 del libro) -->
+        <div class="pagina contra-revista" data-density="hard">
+          <div class="logo-mark">IA</div>
+          <h2>Fin del artículo</h2>
+          <p>FES Acatlán · UNAM — Licenciatura en Matemáticas Aplicadas y Computación</p>
+          <a href="../index.html#articulos" class="btn btn-ghost">← Volver a la revista</a>
+        </div>
+
+      </div>
+
+      <button class="lector-flecha next" aria-label="Página siguiente">›</button>
+    </div>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="contenedor">
+      <div class="footer-grid">
+        <div>
+          <a href="../index.html" class="logo">
+            <span class="logo-mark">IA</span>
+            Revista<span>IA</span>
+          </a>
+          <p style="margin-top: 0.75rem;">Revista digital con artículos escritos por estudiantes sobre temas de Inteligencia Artificial.</p>
+        </div>
+        <ul class="footer-links">
+          <li><a href="../index.html">Inicio</a></li>
+          <li><a href="../index.html#articulos">Artículos</a></li>
+          <li><a href="../index.html#nosotros">Nosotros</a></li>
+        </ul>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; <span id="anio"></span> Revista IA — Trabajo grupal</span>
+        <span>Hecho con HTML, CSS y JS</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/vendor/page-flip.browser.min.js"></script>
+  <script src="../js/lectura.js"></script>
+</body>
+</html>
